@@ -1,4 +1,4 @@
-package org.eshop.config;
+package org.eshop.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

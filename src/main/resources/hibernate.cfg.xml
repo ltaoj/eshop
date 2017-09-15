@@ -6,11 +6,7 @@
     <session-factory>
         <!--配置连接数据库的基本操作-->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">
-            <![CDATA[jdbc:mysql://localhost:3306/eshop?useUnicode=true&characterEncoding=utf8]]>
-        </property>
-        <property name="connection.username">root</property>
-        <property name="connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/eshop</property>
         <!--配置基本信息-->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
@@ -21,6 +17,18 @@
         <property name="hibernate.c3p0.timeout">300</property>
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <mapping class="org.eshop.entity.Cartitem"/>
+        <mapping class="org.eshop.entity.Category"/>
+        <mapping class="org.eshop.entity.Harvestaddr"/>
+        <mapping class="org.eshop.entity.Inventory"/>
+        <mapping class="org.eshop.entity.Item"/>
+        <mapping class="org.eshop.entity.Lineitem"/>
+        <mapping class="org.eshop.entity.Log"/>
+        <mapping class="org.eshop.entity.Order"/>
+        <mapping class="org.eshop.entity.Orderstatus"/>
+        <mapping class="org.eshop.entity.Signon"/>
+        <mapping class="org.eshop.entity.Supplier"/>
+        <mapping class="org.eshop.entity.Userinfo"/>
         <!--指定自动生成数据表的策略-->
         <!--<property name="hbm2ddl.auto">update</property>-->
     </session-factory>
