@@ -135,6 +135,12 @@
       <artifactId>spring-security-taglibs</artifactId>
       <version>4.2.3.RELEASE</version>
     </dependency>
+    <!--消息代码activemq-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.activemq</groupId>-->
+      <!--<artifactId>activemq-all</artifactId>-->
+      <!--<version>5.13.0</version>-->
+    <!--</dependency>-->
   </dependencies>
   <build>
     <finalName>org.eshop</finalName>

@@ -29,6 +29,7 @@
         <mapping class="org.eshop.entity.Signon"/>
         <mapping class="org.eshop.entity.Supplier"/>
         <mapping class="org.eshop.entity.Userinfo"/>
+        <mapping class="org.eshop.entity.Verifycode"/>
         <!--指定自动生成数据表的策略-->
         <!--<property name="hbm2ddl.auto">update</property>-->
     </session-factory>
