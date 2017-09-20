@@ -12,6 +12,12 @@
     <title>新用户注册</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="layui/layui/css/layui.css"/>
+
+    <%--jquery--%>
+    <script src="js/jquery/jquery-3.2.1.min.js"></script>
+
+    <%--special js--%>
+    <script src="js/account/emcode.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -95,14 +101,14 @@
                         <td>
                             <label class="layui-form-label">邮箱:</label>
                             <div class="layui-input-block">
-                                <input type="text" name="email" required  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                <input type="text" id="email" name="email" required  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                             </div>
                         </td>
 
                         <td>&nbsp;&nbsp;</td>
 
                         <td>
-                            <button class="layui-btn layui-btn-primary">获取激活码</button>
+                            <button class="layui-btn layui-btn-primary" onclick="sendEmcode()">获取激活码</button>
                         </td>
 
                     </tr>

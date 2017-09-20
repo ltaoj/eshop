@@ -33,7 +33,7 @@ public class VerifycodeDAOimpl implements VerifycodeDAO {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            String hql = "from Verifycode as v where v.email=" + email + " order by codeId desc";
+            String hql = "from Verifycode as v where v.email='" + email + "' order by codeId desc";
             List<Verifycode> list = session.createQuery(hql).list();
             transaction.commit();
             return list.size() > 0 ? list.get(0) : null;
@@ -49,7 +49,7 @@ public class VerifycodeDAOimpl implements VerifycodeDAO {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            String hql = "delete from Verifycode as v where v.email=" + email;
+            String hql = "delete from Verifycode as v where v.email='" + email + "'";
             session.createQuery(hql).executeUpdate();
             transaction.commit();
         } catch (RuntimeException e) {

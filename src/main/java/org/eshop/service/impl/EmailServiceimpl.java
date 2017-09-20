@@ -22,6 +22,7 @@ public class EmailServiceimpl implements EmailService {
 
     public void sendVerifyCodeEmail(Verifycode verifycode) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("taoj0417@163.com");
         message.setSubject("注册验证码");
         message.setTo(verifycode.getEmail());
         message.setText("您的注册验证码为：" + verifycode.getCode());
