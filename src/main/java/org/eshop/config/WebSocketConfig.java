@@ -14,7 +14,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(eshopCustomHandler(), "/custom");
+        webSocketHandlerRegistry.addHandler(eshopCustomHandler(), "/custom").withSockJS();
     }
 
     @Bean
