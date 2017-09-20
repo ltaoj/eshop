@@ -20,6 +20,9 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/org/eshop/config/WebSocketConfig.java</file>
         </fileset>
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/org/eshop/config/WebSocketStompConfig.java</file>
+        </fileset>
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
@@ -89,5 +92,14 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.3.8.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:2.0.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-net:2.0.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-bus:2.0.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.goldmansachs:gs-collections:5.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.goldmansachs:gs-collections-api:5.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-stream:2.0.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.30.Final" level="project" />
   </component>
 </module>
