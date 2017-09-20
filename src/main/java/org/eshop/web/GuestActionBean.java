@@ -7,6 +7,6 @@ import org.springframework.stereotype.Controller;
  * Created by ltaoj on 2017/9/20.
  */
 @Controller
-public class GuestActionBean {
+public class GuestActionBean extends AbstractActionBean  {
 
 }

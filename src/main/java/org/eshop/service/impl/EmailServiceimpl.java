@@ -3,18 +3,20 @@ package org.eshop.service.impl;
 import org.eshop.entity.Verifycode;
 import org.eshop.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by ltaoj on 2017/9/20.
  */
+@Service
 public class EmailServiceimpl implements EmailService {
 
-    private JavaMailSender mailSender;
+    private MailSender mailSender;
 
     @Autowired
-    public EmailServiceimpl(JavaMailSender mailSender) {
+    public EmailServiceimpl(MailSender mailSender) {
         this.mailSender = mailSender;
     }
 

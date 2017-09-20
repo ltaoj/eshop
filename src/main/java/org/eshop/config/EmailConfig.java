@@ -1,6 +1,7 @@
 package org.eshop.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -8,6 +9,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 /**
  * Created by ltaoj on 2017/9/20.
  */
+@Configuration
 public class EmailConfig {
 
     @Bean
