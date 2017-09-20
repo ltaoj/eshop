@@ -8,6 +8,15 @@ import javax.persistence.PersistenceException;
  * Created by ltaoj on 2017/9/18.
  */
 public interface SignonDAO {
+
+    /**
+     * 获取登录信息
+     * @param userId
+     * @return
+     * @throws PersistenceException
+     */
+    Signon getSignon(String userId) throws PersistenceException;
+
     /**
      * 插入登录信息
      * @param signon

@@ -29,7 +29,7 @@ public class VerifycodeServiceimpl implements VerifycodeService {
         verifycodeDAO.insertVerifycode(verifycode);
     }
 
-    public Verifycode getVerifycode(String email) throws VerifycodeServiceException {
-        return verifycodeDAO.getVerifycode(email);
+    public boolean isVerifycodeValid(String email, String code) throws VerifycodeServiceException {
+        return verifycodeDAO.getVerifycode(email).equals(code);
     }
 }

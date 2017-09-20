@@ -1,4 +1,4 @@
-package org.eshop.entity;
+package org.eshop.domain;
 
 /**
  * Created by ltaoj on 2017/9/20.

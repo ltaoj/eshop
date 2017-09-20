@@ -30,6 +30,7 @@ public class AccountServiceimpl implements AccountService {
 
     public void registUser(Signon signon) throws AccountServiceException {
         userinfoDAO.insertUserinfo(ObjectTransformUtil.toUserinfo(signon));
+        signon.setAuthorities("ROLE_USER");
         signonDAO.insertSignon(signon);
     }
 

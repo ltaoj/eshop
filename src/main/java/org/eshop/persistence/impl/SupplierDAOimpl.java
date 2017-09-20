@@ -1,6 +1,7 @@
 package org.eshop.persistence.impl;
 
 import org.eshop.entity.Supplier;
+import org.eshop.persistence.AbstractDAO;
 import org.eshop.persistence.SupplierDAO;
 import org.eshop.util.HibernateUtil;
 import org.hibernate.Session;
@@ -13,10 +14,10 @@ import javax.persistence.PersistenceException;
  * Created by ltaoj on 2017/9/18.
  */
 @Repository
-public class SupplierDAOimpl implements SupplierDAO {
+public class SupplierDAOimpl extends AbstractDAO implements SupplierDAO {
     public void insertSupplier(Supplier supplier) throws PersistenceException {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = getTransation(session);
         try {
             session.save(supplier);
             transaction.commit();
@@ -30,7 +31,7 @@ public class SupplierDAOimpl implements SupplierDAO {
 
     public void updateSupplier(Supplier supplier) throws PersistenceException {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = getTransation(session);
         try {
             session.update(supplier);
             transaction.commit();

@@ -9,7 +9,7 @@ import org.eshop.exception.VerifycodeServiceException;
 public interface VerifycodeService {
 
     /**
-     * 随机生成6为数字+字母验证码
+     * 随机生成6位数字+字母验证码
      * @return
      * @throws VerifycodeServiceException
      */
@@ -23,9 +23,10 @@ public interface VerifycodeService {
     void insertVerifyCode(Verifycode verifycode) throws VerifycodeServiceException;
 
     /**
-     * 返回获取验证码记录
+     * 判断验证码是否正确
      * @param email
+     * @param code
      * @throws VerifycodeServiceException
      */
-    Verifycode getVerifycode(String email) throws VerifycodeServiceException;
+    boolean isVerifycodeValid(String email, String code) throws VerifycodeServiceException;
 }

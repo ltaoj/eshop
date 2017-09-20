@@ -1,6 +1,7 @@
 package org.eshop.web;
 
-import org.eshop.entity.Result;
+import org.eshop.domain.ErrorCode;
+import org.eshop.domain.Result;
 import org.eshop.entity.Verifycode;
 import org.eshop.exception.VerifycodeServiceException;
 import org.eshop.exception.WrapperServiceException;
@@ -31,7 +32,7 @@ public class VerifycodeActionBean extends AbstractActionBean {
     }
 
     @RequestMapping(value = "emcode", method = RequestMethod.GET)
-    public ResponseEntity<Result> sendVerifyCode(String email) throws VerifycodeServiceException {
+    public ResponseEntity<Result> sendVerifyCode(String email) {
         try {
             String code = verifycodeService.getRandomCode();
             Verifycode verifycode = new Verifycode();
@@ -42,7 +43,7 @@ public class VerifycodeActionBean extends AbstractActionBean {
             emailService.sendVerifyCodeEmail(verifycode);// 发送邮件验证码
             return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, "发送成功,请再10分钟输入验证码"), HttpStatus.OK);
         } catch (VerifycodeServiceException e) {
-            throw new WrapperServiceException(e, 1);
+            throw new WrapperServiceException(e, ErrorCode.SEND_EMAIL_CODE_ERROR);
         }
     }
 }

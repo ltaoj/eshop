@@ -7,6 +7,10 @@ public class WrapperServiceException extends RuntimeException{
     private ServiceException serviceException;
     private int errorCode;
 
+    public WrapperServiceException(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
     public WrapperServiceException(ServiceException serviceException, int errorCode) {
         this.serviceException = serviceException;
         this.errorCode = errorCode;

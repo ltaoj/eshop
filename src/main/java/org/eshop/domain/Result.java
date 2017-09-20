@@ -1,4 +1,4 @@
-package org.eshop.entity;
+package org.eshop.domain;
 
 public class Result {
 

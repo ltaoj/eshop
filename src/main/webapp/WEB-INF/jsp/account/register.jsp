@@ -11,7 +11,7 @@
 <head>
     <title>新用户注册</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="layui/layui/css/layui.css"/>
+    <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
 
     <%--jquery--%>
     <script src="js/jquery/jquery-3.2.1.min.js"></script>
@@ -47,10 +47,10 @@
     <table>
         <tr>
             <td>
-                <img src="../images/main/logo.png" class="logoPic">
+                <img src="images/main/logo.png" class="logoPic">
             </td>
             <td>
-                <img src="../images/main/title1.png">
+                <img src="images/main/title1.png">
             </td>
             <td>
                 <p><span class="loginTip">已有账号，立即登录</span></p>

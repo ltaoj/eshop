@@ -1,6 +1,7 @@
 package org.eshop.persistence.impl;
 
 import org.eshop.entity.Userinfo;
+import org.eshop.persistence.AbstractDAO;
 import org.eshop.persistence.UserinfoDAO;
 import org.eshop.util.HibernateUtil;
 import org.hibernate.Session;
@@ -13,14 +14,14 @@ import javax.persistence.PersistenceException;
  * Created by ltaoj on 2017/9/18.
  */
 @Repository
-public class UserinfoDAOimpl implements UserinfoDAO {
+public class UserinfoDAOimpl extends AbstractDAO implements UserinfoDAO {
     private static final int CHANGE_BASIC_INFO = 0;
     private static final int CHANGE_EMAIL = 1;
     private static final int CHANGE_PHONE = 2;
 
     public void insertUserinfo(Userinfo userinfo) throws PersistenceException {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = getTransation(session);
         try {
             session.save(userinfo);
             transaction.commit();
@@ -48,7 +49,7 @@ public class UserinfoDAOimpl implements UserinfoDAO {
 
     private void updateUserInfo(Userinfo userinfo, int operateType) {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = getTransation(session);
         String hql = "update Userinfo as u";
         switch (operateType) {
             case CHANGE_BASIC_INFO:

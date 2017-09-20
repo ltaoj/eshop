@@ -23,6 +23,12 @@
         <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/org/eshop/config/WebSocketStompConfig.java</file>
         </fileset>
+        <fileset id="fileset3" name="Spring Application Context (3)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/org/eshop/config/SecurityConfig.java</file>
+        </fileset>
+        <fileset id="fileset4" name="Spring Application Context (4)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/org/eshop/config/EmailConfig.java</file>
+        </fileset>
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
