@@ -28,7 +28,7 @@ public class SignonDAOimpl extends AbstractDAO implements SignonDAO {
             return signon;
         } catch (RuntimeException e) {
             transaction.rollback();
-            throw e;
+            throw new PersistenceException(e);
         } finally {
             session.close();
         }
