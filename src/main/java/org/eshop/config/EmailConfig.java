@@ -20,11 +20,7 @@ public class EmailConfig {
         mailSender.setHost("smtp.163.com");
         mailSender.setPort(25);
         mailSender.setUsername("taoj0417@163.com");
-        mailSender.setPassword("taoj0417");
-//        Properties properties = System.getProperties();
-//        properties.put("mail.smtp.host", "smtp.163.com");
-//        properties.put("mail.smtp.auth", "true");
-//        mailSender.setJavaMailProperties(properties);
+        mailSender.setPassword("helloworld123");
         return mailSender;
     }
 }
