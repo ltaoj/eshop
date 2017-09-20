@@ -161,7 +161,7 @@
     <!--reactor-->
     <dependency>
       <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-core</artifactId>
+        <artifactId>reactor-core</artifactId>
       <version>2.0.4.RELEASE</version>
     </dependency>
 
@@ -175,6 +175,18 @@
       <groupId>io.netty</groupId>
       <artifactId>netty-all</artifactId>
       <version>4.0.30.Final</version>
+    </dependency>
+    <!--javax mail-->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
+    <!--spring mail-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-support</artifactId>
+      <version>2.0.6</version>
     </dependency>
   </dependencies>
   <build>
