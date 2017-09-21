@@ -1,6 +1,5 @@
 package org.eshop.persistence.impl;
 
-import org.eshop.entity.Lineitem;
 import org.eshop.entity.Order;
 import org.eshop.persistence.AbstractDAO;
 import org.eshop.persistence.OrderDAO;

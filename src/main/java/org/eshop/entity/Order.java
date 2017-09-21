@@ -4,10 +4,11 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Created by ltaoj on 2017/9/15.
+ * Created by ltaoj on 2017/9/21.
  */
 @Entity
 public class Order {
@@ -21,7 +22,7 @@ public class Order {
     private String billDistrict;
     private String billDetailAddr;
     private String name;
-    private int totalPrice;
+    private BigDecimal totalPrice;
 
     @Id
     @Column(name = "order_id")
@@ -125,11 +126,11 @@ public class Order {
 
     @Basic
     @Column(name = "total_price")
-    public int getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -140,7 +141,6 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (totalPrice != order.totalPrice) return false;
         if (orderId != null ? !orderId.equals(order.orderId) : order.orderId != null) return false;
         if (orderDate != null ? !orderDate.equals(order.orderDate) : order.orderDate != null) return false;
         if (loginId != null ? !loginId.equals(order.loginId) : order.loginId != null) return false;
@@ -153,6 +153,7 @@ public class Order {
         if (billDetailAddr != null ? !billDetailAddr.equals(order.billDetailAddr) : order.billDetailAddr != null)
             return false;
         if (name != null ? !name.equals(order.name) : order.name != null) return false;
+        if (totalPrice != null ? !totalPrice.equals(order.totalPrice) : order.totalPrice != null) return false;
 
         return true;
     }
@@ -169,7 +170,7 @@ public class Order {
         result = 31 * result + (billDistrict != null ? billDistrict.hashCode() : 0);
         result = 31 * result + (billDetailAddr != null ? billDetailAddr.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + totalPrice;
+        result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
         return result;
     }
 }

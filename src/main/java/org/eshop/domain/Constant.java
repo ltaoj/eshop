@@ -6,4 +6,7 @@ package org.eshop.domain;
 public class Constant {
     public static final int UNUSE_ADDR_AS_DEFAULT = 0; // 不是默认地址
     public static final int USE_ADDR_AS_DEFAULT = 1; // 默认地址
+
+    public static final int ORDER_UNPAIED = 0; // 订单未付款
+    public static final int ORDER_CANCELED = 1; // 订单取消
 }

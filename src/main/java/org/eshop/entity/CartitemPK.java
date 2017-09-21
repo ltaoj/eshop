@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by ltaoj on 2017/9/15.
+ * Created by ltaoj on 2017/9/21.
  */
 public class CartitemPK implements Serializable {
     private String loginId;

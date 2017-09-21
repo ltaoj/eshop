@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * Created by ltaoj on 2017/9/15.
+ * Created by ltaoj on 2017/9/21.
  */
 @Entity
 @IdClass(LineitemPK.class)

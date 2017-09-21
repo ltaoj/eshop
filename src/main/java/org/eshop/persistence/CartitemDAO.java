@@ -39,6 +39,15 @@ public interface CartitemDAO {
     void updateCartitem(Cartitem cartitem) throws PersistenceException;
 
     /**
+     * 根据id查询购物车商品
+     * @param itemId
+     * @param loginId
+     * @return
+     * @throws PersistenceException
+     */
+    Cartitem getCartitem(String itemId, String loginId) throws PersistenceException;
+
+    /**
      * 获取购物车所有商品
      * @param loginId
      * @return

@@ -21,4 +21,12 @@ public interface SupplierDAO {
      * @throws PersistenceException
      */
     void updateSupplier(Supplier supplier) throws PersistenceException;
+
+    /**
+     * 获取供货商信息
+     * @param supplierId
+     * @return
+     * @throws PersistenceException
+     */
+    Supplier getSupplier(String supplierId) throws PersistenceException;
 }

@@ -80,6 +80,24 @@ public class CartitemDAOimpl extends AbstractDAO implements CartitemDAO {
         }
     }
 
+    public Cartitem getCartitem(String itemId, String loginId) throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            CartitemPK cartitemPK = new CartitemPK();
+            cartitemPK.setItemId(itemId);
+            cartitemPK.setLoginId(loginId);
+            Cartitem cartitem = session.get(Cartitem.class, cartitemPK);
+            transaction.commit();
+            return cartitem;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
+
     public List<Cartitem> getCartitemList(String loginId) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);

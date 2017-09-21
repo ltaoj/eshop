@@ -42,4 +42,19 @@ public class SupplierDAOimpl extends AbstractDAO implements SupplierDAO {
             session.close();
         }
     }
+
+    public Supplier getSupplier(String supplierId) throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            Supplier supplier = session.get(Supplier.class, supplierId);
+            transaction.commit();
+            return supplier;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by ltaoj on 2017/9/20.
  */
 @Controller
-public class ProductActionBean extends AbstractActionBean {
+public class CatelogActionBean extends AbstractActionBean {
 
     @RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
     public String showHomePage() {
