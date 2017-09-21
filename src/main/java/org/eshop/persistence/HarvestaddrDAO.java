@@ -31,17 +31,19 @@ public interface HarvestaddrDAO {
 
     /**
      * 设置默认收获地址
-     * @param harvestaddr
+     * @param addrId
+     * @param loginId
      * @throws PersistenceException
      */
-    void setDefaultHarvestaddr(int harvestaddr) throws PersistenceException;
+    void setDefaultHarvestaddr(int addrId, String loginId) throws PersistenceException;
 
     /**
      * 获取默认收获地址
+     * @param loginId
      * @return
      * @throws PersistenceException
      */
-    Harvestaddr getDefaultHarvestaddr() throws PersistenceException;
+    Harvestaddr getDefaultHarvestaddr(String loginId) throws PersistenceException;
 
 
 }

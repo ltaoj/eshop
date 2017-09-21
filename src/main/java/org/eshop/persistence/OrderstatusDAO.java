@@ -32,7 +32,8 @@ public interface OrderstatusDAO {
     /**
      * 获取订单状态
      * @param orderId
+     * @return
      * @throws PersistenceException
      */
-    void getOrderstatus(String orderId) throws PersistenceException;
+    Orderstatus getOrderstatus(String orderId) throws PersistenceException;
 }
