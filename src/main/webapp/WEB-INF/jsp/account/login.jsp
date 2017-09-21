@@ -89,7 +89,7 @@
     $("#register").click(function(){
 
 //window.location= 'register.html' ; //跳转到指定页面
-        window.open('registerForm') ; //打开窗口
+        window.open('registForm') ; //打开窗口
     })
 
 
