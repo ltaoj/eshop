@@ -12,6 +12,10 @@
     <title>主页</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
+    <!--引入js文件-->
+    <script src="js/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="plugin/layui/layui.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -33,7 +37,7 @@
         <tr>
             <td style="width: 80%"><img src="images/main/text.png"></td>
 
-            <td style="width: 200px"><img src="images/main/user.png"></td>
+            <td style="width: 200px"><img src="images/main/user.png" id="login"></td>
 
             <td><img src="images/main/cart.png"></td>
         </tr>
@@ -78,5 +82,19 @@
 
 
 </div>
+
+<script type="text/javascript">
+    $('#login').on('click', function(){
+        layer.open({
+            type: 2, //弹出层的类型
+            title: '',//弹出框的标题
+            maxmin: false,//最大最小化
+            shadeClose: true, //点击遮罩关闭层
+            area : ['420px' , '300px'],//区域大小面积
+            content: 'loginForm'//打开之后呈现的html内容
+        });
+    });
+</script>
+
 </body>
 </html>
