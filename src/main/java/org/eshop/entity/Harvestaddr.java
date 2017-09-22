@@ -1,9 +1,6 @@
 package org.eshop.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ltaoj on 2017/9/15.
@@ -13,6 +10,7 @@ public class Harvestaddr {
     private int addrId;
     private String loginId;
     private String aliasName;
+    private String phone;
     private String province;
     private String city;
     private String district;
@@ -20,6 +18,7 @@ public class Harvestaddr {
     private Integer useDefault;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "addr_id")
     public int getAddrId() {
         return addrId;
@@ -47,6 +46,16 @@ public class Harvestaddr {
 
     public void setAliasName(String aliasName) {
         this.aliasName = aliasName;
+    }
+
+    @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Basic
@@ -109,6 +118,7 @@ public class Harvestaddr {
         if (addrId != that.addrId) return false;
         if (loginId != null ? !loginId.equals(that.loginId) : that.loginId != null) return false;
         if (aliasName != null ? !aliasName.equals(that.aliasName) : that.aliasName != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (province != null ? !province.equals(that.province) : that.province != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (district != null ? !district.equals(that.district) : that.district != null) return false;
@@ -123,6 +133,7 @@ public class Harvestaddr {
         int result = addrId;
         result = 31 * result + (loginId != null ? loginId.hashCode() : 0);
         result = 31 * result + (aliasName != null ? aliasName.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (province != null ? province.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (district != null ? district.hashCode() : 0);

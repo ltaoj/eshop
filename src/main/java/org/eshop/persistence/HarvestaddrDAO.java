@@ -3,6 +3,7 @@ package org.eshop.persistence;
 import org.eshop.entity.Harvestaddr;
 
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * Created by ltaoj on 2017/9/20.
@@ -45,5 +46,11 @@ public interface HarvestaddrDAO {
      */
     Harvestaddr getDefaultHarvestaddr(String loginId) throws PersistenceException;
 
-
+    /**
+     * 获取全部收获地址
+     * @param loginId
+     * @return
+     * @throws PersistenceException
+     */
+    List<Harvestaddr> getHarvestAddr(String loginId) throws PersistenceException;
 }

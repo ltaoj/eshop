@@ -31,8 +31,8 @@ public class TestActionBean extends AbstractActionBean {
         return "product/searchByShape";
     }
 
-    @RequestMapping(value = "addrModal", method = RequestMethod.GET)
-    public String showAddrModal() {
-        return "account/addAddress";
+    @RequestMapping(value = "myOrder", method = RequestMethod.GET)
+    public String showOrder() {
+        return "order/order";
     }
 }

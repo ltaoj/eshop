@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +59,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户ID:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="user_id" value="848743941"  autocomplete="off" class="layui-input" style="width: 300px" readonly="readonly">
+                        <input type="text" name="user_id" value="<c:out value='${user.loginId}'/>"  autocomplete="off" class="layui-input" style="width: 300px" readonly="readonly">
                     </div>
                 </div>
                 <br>
@@ -63,7 +67,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">昵  称:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" value="cocohobo"  autocomplete="off" class="layui-input" style="width: 300px">
+                        <input type="text" name="username" value="<c:out value='${user.name}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
                     </div>
                 </div>
                 <br>
@@ -71,7 +75,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮  箱:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="email" value="yuemengyangr370@163.com"  autocomplete="off" class="layui-input" style="width: 300px">
+                        <input type="text" name="email" value="<c:out value='${user.email}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
                     </div>
                 </div>
                 <br>
@@ -79,7 +83,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号码:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="phone" value="15111214456"  autocomplete="off" class="layui-input" style="width: 300px" >
+                        <input type="text" name="phone" value="<c:out value='${user.phone}'/>"  autocomplete="off" class="layui-input" style="width: 300px" >
                     </div>
                 </div>
                 <br>
@@ -95,7 +99,40 @@
 
         <!--收获地址-->
         <div class="layui-tab-item">
-            内容2
+            <button class="layui-btn" id="add_address">
+                <i class="layui-icon">&#xe608;</i> 新增收货地址
+            </button>
+            <br>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="70">
+                    <col width="70">
+                    <col width="150">
+                    <col width="50">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th >收货人</th>
+                    <th >联系方式</th>
+                    <th >地址</th>
+                    <th >操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="addr" items="${addrList}">
+                    <tr>
+                        <td>${addr.aliasName}</td>
+                        <td>${addr.phone}</td>
+                        <td>${addr.province}${addr.city}${addr.district}${addr.detailAddr}</td>
+                        <td>
+                            <span class="layui-badge">删除</span>
+                            <span class="layui-badge layui-bg-green">修改</span>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
         </div>
         <!--密码修改-->
         <div class="layui-tab-item">
@@ -139,6 +176,18 @@
 </div>
 
 <script>
+
+    $('#add_address').on('click', function(){
+        layer.open({
+            type: 2, //弹出层的类型
+            title: '',//弹出框的标题
+            maxmin: false,//最大最小化
+            shadeClose: true, //点击遮罩关闭层
+            area : ['400px' , '600px'],//区域大小面积
+            content: 'addressModal'//打开之后呈现的html内容
+        });
+    });
+
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
     layui.use('element', function(){
         var element = layui.element;

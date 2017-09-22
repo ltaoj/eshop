@@ -16,6 +16,13 @@ public interface UserinfoDAO {
     void insertUserinfo(Userinfo userinfo) throws PersistenceException;
 
     /**
+     * 修改基本信息
+     * @param userinfo
+     * @throws PersistenceException
+     */
+    void changeBasic(Userinfo userinfo) throws PersistenceException;
+
+    /**
      * 修改用户邮箱
      * @param loginId
      * @param email

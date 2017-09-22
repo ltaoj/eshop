@@ -23,6 +23,24 @@ public abstract class AbstractActionBean {
             case ErrorCode.SEND_EMAIL_CODE_ERROR:
                 error = new Error(e.getErrorCode(), "验证码获取失败，请重试");
                 break;
+            case ErrorCode.EMAIL_CODE_INVALID:
+                error = new Error(e.getErrorCode(), "验证码输入错误");
+                break;
+            case ErrorCode.REGIST_FAILED_ERROR:
+                error = new Error(e.getErrorCode(), "注册失败");
+                break;
+            case ErrorCode.GET_USERINFO_FAILEED:
+                error = new Error(e.getErrorCode(), "用户信息查询失败");
+                break;
+            case ErrorCode.ADD_ADDRESS_FAILED:
+                error = new Error(e.getErrorCode(), "收获地址添加失败");
+                break;
+            case ErrorCode.DEL_ADDRESS_FAILED:
+                error = new Error(e.getErrorCode(), "收获地址删除失败");
+                break;
+            case ErrorCode.GET_ADDRESS_FAILED:
+                error = new Error(e.getErrorCode(), "收货地址信息获取失败");
+                break;
         }
         return error;
     }

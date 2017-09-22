@@ -4,6 +4,7 @@ import org.eshop.entity.Verifycode;
 import org.eshop.exception.VerifycodeServiceException;
 import org.eshop.persistence.VerifycodeDAO;
 import org.eshop.service.VerifycodeService;
+import org.eshop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class VerifycodeServiceimpl implements VerifycodeService {
     }
 
     public String getRandomCode() throws VerifycodeServiceException {
-        return "FE4H5C";
+        return StringUtil.getRandomString(6);
     }
 
     public void insertVerifyCode(Verifycode verifycode) throws VerifycodeServiceException {
@@ -30,6 +31,6 @@ public class VerifycodeServiceimpl implements VerifycodeService {
     }
 
     public boolean isVerifycodeValid(String email, String code) throws VerifycodeServiceException {
-        return verifycodeDAO.getVerifycode(email).equals(code);
+        return verifycodeDAO.getVerifycode(email).getCode().equals(code);
     }
 }

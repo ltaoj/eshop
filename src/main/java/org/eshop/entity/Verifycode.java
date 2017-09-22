@@ -14,7 +14,6 @@ public class Verifycode {
     private Timestamp expireDate;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_id")
     public int getCodeId() {
         return codeId;

@@ -95,4 +95,20 @@ public class HarvestaddrDAOimpl extends AbstractDAO implements HarvestaddrDAO {
             session.close();
         }
     }
+
+    public List<Harvestaddr> getHarvestAddr(String loginId) throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            String hql = "from Harvestaddr as h where h.loginId='" + loginId + "'";
+            List<Harvestaddr> list = session.createQuery(hql).list();
+            transaction.commit();
+            return list;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
 }

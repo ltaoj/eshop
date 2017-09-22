@@ -34,6 +34,10 @@ public class UserinfoDAOimpl extends AbstractDAO implements UserinfoDAO {
         }
     }
 
+    public void changeBasic(Userinfo userinfo) throws PersistenceException {
+        updateUserInfo(userinfo, CHANGE_BASIC_INFO);
+    }
+
     public void changeEmail(String loginId, String email) throws PersistenceException {
         Userinfo userinfo = new Userinfo();
         userinfo.setLoginId(loginId);
