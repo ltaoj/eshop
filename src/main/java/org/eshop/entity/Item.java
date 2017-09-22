@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Entity
 public class Item {
     private String itemId;
+    private String name;
     private String categoryId;
     private String supplierId;
     private BigDecimal listprice;
@@ -30,6 +31,15 @@ public class Item {
 
     public void setItemId(String itemId) {
         this.itemId = itemId;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Basic
@@ -131,6 +141,7 @@ public class Item {
 
         if (isStock != item.isStock) return false;
         if (itemId != null ? !itemId.equals(item.itemId) : item.itemId != null) return false;
+        if (name != null ? !name.equals(item.name) : item.name != null) return false;
         if (categoryId != null ? !categoryId.equals(item.categoryId) : item.categoryId != null) return false;
         if (supplierId != null ? !supplierId.equals(item.supplierId) : item.supplierId != null) return false;
         if (listprice != null ? !listprice.equals(item.listprice) : item.listprice != null) return false;
@@ -146,6 +157,7 @@ public class Item {
     @Override
     public int hashCode() {
         int result = itemId != null ? itemId.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (categoryId != null ? categoryId.hashCode() : 0);
         result = 31 * result + (supplierId != null ? supplierId.hashCode() : 0);
         result = 31 * result + (listprice != null ? listprice.hashCode() : 0);

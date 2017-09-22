@@ -86,6 +86,7 @@ public class AccountActionBean extends AbstractActionBean {
         model.setViewName("login");
         return model;
     }
+
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -118,6 +119,7 @@ public class AccountActionBean extends AbstractActionBean {
             throw new WrapperServiceException(ErrorCode.UPDATE_USERINFO_FAILED);
         }
     }
+
     @RequestMapping(value = "isExist", method = RequestMethod.GET)
     public ResponseEntity<Result> isUserExist() {
         try {

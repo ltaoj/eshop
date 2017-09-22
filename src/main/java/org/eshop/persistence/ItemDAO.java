@@ -32,20 +32,37 @@ public interface ItemDAO {
     Item getItem(String itemId) throws PersistenceException;
 
     /**
-     * 根据商品品类分页获取所有商品
-     * @param categoryId
-     * @param offset
-     * @param count
-     * @return
-     * @throws PersistenceException
-     */
-    List<Item> getItemListByCategoryIdPaging(String categoryId, int offset, int count) throws PersistenceException;
-
-    /**
      * 通过关键字获取商品列表，模糊查询
      * @param keyword
      * @return
      * @throws PersistenceException
      */
     List<Item> getItemListByKeyword(String keyword) throws PersistenceException;
+
+    /**
+     * 通过关键字获取商品列表，分页查询
+     * @param keyword
+     * @param offset
+     * @param count
+     * @return
+     */
+    List<Item> getItemListByKeywordPaging(String keyword, int offset, int count);
+
+    /**
+     * 通过商品属性检索商品
+     * @param keyword
+     * @param type
+     * @return
+     */
+    List<Item> getItemListByAttr(String keyword, String type);
+
+    /**
+     * 通过商品属性分页检索商品
+     * @param keyword
+     * @param type
+     * @param offset
+     * @param count
+     * @return
+     */
+    List<Item> getItemListByAttrPaging(String keyword, String type, int offset, int count);
 }

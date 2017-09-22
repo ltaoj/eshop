@@ -1,5 +1,6 @@
 package org.eshop.persistence.impl;
 
+import org.eshop.domain.Constant;
 import org.eshop.entity.Item;
 import org.eshop.persistence.AbstractDAO;
 import org.eshop.persistence.ItemDAO;
@@ -10,6 +11,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.PersistenceException;
+import javax.security.sasl.SaslException;
 import java.util.List;
 
 /**
@@ -60,17 +62,14 @@ public class ItemDAOimpl extends AbstractDAO implements ItemDAO {
         }
     }
 
-    public List<Item> getItemListByCategoryIdPaging(String categoryId, int offset, int count) throws PersistenceException {
+    public List<Item> getItemListByKeyword(String keyword) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
-             String hql = "from Item as i where i.categoryId='" + categoryId + "'";
-             Query query = session.createQuery(hql);
-             query.setFirstResult(offset);
-             query.setMaxResults(count);
-             List<Item> list = query.list();
-             transaction.commit();
-             return list;
+            String hql = "from Item as i where i.name like '%" + keyword + "%'";
+            List<Item> list = session.createQuery(hql).list();
+            transaction.commit();
+            return list;
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);
@@ -79,7 +78,57 @@ public class ItemDAOimpl extends AbstractDAO implements ItemDAO {
         }
     }
 
-    public List<Item> getItemListByKeyword(String keyword) throws PersistenceException {
-        return null;
+    public List<Item> getItemListByKeywordPaging(String keyword, int offset, int count) {
+        Session session = HibernateUtil.getSession();
+        Transaction  transaction = getTransation(session);
+        try {
+            String hql = "from Item as i where i.name like '%" + keyword + "%'";
+            Query query = session.createQuery(hql);
+            query.setFirstResult(offset);
+            query.setMaxResults(count);
+            List<Item> list = query.list();
+            transaction.commit();
+            return list;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Item> getItemListByAttr(String keyword, String type) {
+        Session session = HibernateUtil.getSession();
+        Transaction  transaction = getTransation(session);
+        try {
+            String hql = "from Item as i where " + (type.equals(Constant.SEARCH_BY_ATTR_COLOR) ? "i.attr1" : "i.attr2") + " like '%" + keyword + "%'";
+            List<Item> list = session.createQuery(hql).list();
+            transaction.commit();
+            return list;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Item> getItemListByAttrPaging(String keyword, String type, int offset, int count) {
+        Session session = HibernateUtil.getSession();
+        Transaction  transaction = getTransation(session);
+        try {
+            String hql = "from Item as i where " + (type.equals(Constant.SEARCH_BY_ATTR_COLOR) ? "i.attr1" : "i.attr2") + " like '%" + keyword + "%'";
+            Query query = session.createQuery(hql);
+            query.setFirstResult(offset);
+            query.setMaxResults(count);
+            List<Item> list = query.list();
+            transaction.commit();
+            return list;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
     }
 }

@@ -9,4 +9,8 @@ public class Constant {
 
     public static final int ORDER_UNPAIED = 0; // 订单未付款
     public static final int ORDER_CANCELED = 1; // 订单取消
+
+    public static final String SEARCH_BY_NAME = "name"; // 通过商品名称搜索
+    public static final String SEARCH_BY_ATTR_COLOR = "color"; // 通过颜色属性搜索
+    public static final String SEARCH_BY_ATTR_SHAPE = "shape"; // 通过形状属性搜索
 }

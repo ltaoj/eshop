@@ -24,7 +24,7 @@
         <tr>
             <td style="width: 80%"><img src="images/main/text.png"></td>
 
-            <td style="width: 200px"><a href="/myInfo"><img src="images/main/user.png" id="login"></a></td>
+            <td style="width: 200px"><a href="<%=request.getContextPath()%>/myInfo"><img src="images/main/user.png" id="login"></a></td>
 
             <td><img src="images/main/cart.png"></td>
         </tr>
@@ -120,7 +120,10 @@
                     <td>18179287293</td>
                     <td>江西省新余市大一中学</td>
                     <td>89.0</td>
-                    <td><span class="layui-badge" id="delete">删除订单</span></td>
+                    <td>
+                        <span class="layui-badge" id="delete">删除订单</span>
+                        <a href="<%=request.getContextPath()%>/orderDetail"><span class="layui-badge layui-bg-orange">查看详情</span></a>
+                    </td>
                     <td><span class="layui-badge layui-bg-blue">已付款</span></td>
                 </tr>
                 </tbody>

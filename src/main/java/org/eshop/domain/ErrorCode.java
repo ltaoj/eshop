@@ -16,4 +16,5 @@ public class ErrorCode {
     public static final int ORIGIN_PASSWORD_UNCORRECT = 10; // 原密码不正确
     public static final int CHANGE_PASSWORD_FAILED = 11; // 修改密码失败
     public static final int UPDATE_USERINFO_FAILED = 12; // 基本信息修改失败
+    public static final int SEARCH_ITEM_ERROR = 13; // 商品搜索错误
 }

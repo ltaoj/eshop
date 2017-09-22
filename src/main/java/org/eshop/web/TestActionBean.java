@@ -15,7 +15,6 @@ public class TestActionBean extends AbstractActionBean {
         return "cart/cart";
     }
 
-
     @RequestMapping(value = "itemDetail", method = RequestMethod.GET)
     public String showItemDetail() {
         return "product/itemInfo";
@@ -34,5 +33,10 @@ public class TestActionBean extends AbstractActionBean {
     @RequestMapping(value = "myOrder", method = RequestMethod.GET)
     public String showOrder() {
         return "order/order";
+    }
+
+    @RequestMapping(value = "orderDetail", method = RequestMethod.GET)
+    public String showOrderDetail() {
+        return "order/orderDetail";
     }
 }
