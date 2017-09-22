@@ -3,6 +3,7 @@ package org.eshop.service.impl;
 import org.eshop.domain.Constant;
 import org.eshop.domain.OrderDetail;
 import org.eshop.entity.*;
+import org.eshop.exception.OrderServiceException;
 import org.eshop.persistence.*;
 import org.eshop.service.OrderService;
 import org.eshop.util.StringUtil;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,8 +88,35 @@ public class OrderServiceimpl implements OrderService {
         return orderDetail;
     }
 
-    public List<Order> getOrderList(String loginId) {
-        return orderDAO.getOrderListByLoginId(loginId);
+    public List<OrderDetail> getOrderList(String loginId) {
+        List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
+        List<Order> orderList = orderDAO.getOrderListByLoginId(loginId);
+        for (int i = 0;i < orderList.size();i++) {
+            OrderDetail orderDetail = new OrderDetail();
+            List<Lineitem> lineitemList = lineitemDAO.getLineitemListByOrderId(orderList.get(i).getOrderId());
+            Orderstatus orderstatus = orderstatusDAO.getOrderstatus(orderList.get(i).getOrderId());
+            orderDetail.setOrder(orderList.get(i));
+            orderDetail.setLineitems(lineitemList);
+            orderDetail.setOrderstatus(orderstatus);
+            orderDetailList.add(orderDetail);
+        }
+        return orderDetailList;
+    }
+
+    public List<OrderDetail> getOrderListByStatus(String loginId, int status) throws OrderServiceException {
+        List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
+        List<Order> orderList = orderDAO.getOrderListByLoginId(loginId);
+        for (int i = 0;i < orderList.size();i++) {
+            Orderstatus orderstatus = orderstatusDAO.getOrderstatus(orderList.get(i).getOrderId());
+            if (orderstatus.getStatus() != status) continue;
+            OrderDetail orderDetail = new OrderDetail();
+            List<Lineitem> lineitemList = lineitemDAO.getLineitemListByOrderId(orderList.get(i).getOrderId());
+            orderDetail.setOrder(orderList.get(i));
+            orderDetail.setLineitems(lineitemList);
+            orderDetail.setOrderstatus(orderstatus);
+            orderDetailList.add(orderDetail);
+        }
+        return orderDetailList;
     }
 
     public OrderDetail getOrderDetail(String orderId) {

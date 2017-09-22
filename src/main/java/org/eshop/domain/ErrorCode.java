@@ -17,4 +17,14 @@ public class ErrorCode {
     public static final int CHANGE_PASSWORD_FAILED = 11; // 修改密码失败
     public static final int UPDATE_USERINFO_FAILED = 12; // 基本信息修改失败
     public static final int SEARCH_ITEM_ERROR = 13; // 商品搜索错误
+    public static final int GET_ITEM_DETAIL_FAILED = 14; // 商品详细信息获取错误
+    public static final int ADD_IETM_TO_CART_FAILED = 15; // 商品添加购物车失败
+    public static final int REMOVE_FROM_CART_FAILED = 16; // 移除购物车商品失败
+    public static final int CARTITEM_STEP_FAILED = 17; // 购物车商品数量递增递减失败
+    public static final int VIEWCART_FAILED = 18; // 查看购物车失败
+    public static final int CREATE_ORDER_FAILED = 19; // 订单创建失败
+    public static final int GET_ORDER_DETAIL_FAILED = 20; // 订单详情查询失败
+    public static final int GET_ORDER_LIST_FAILED = 21; // 订单列表获取失败
+    public static final int CANCEL_ORDER_FAILED = 22; // 订单取消失败
+    public static final int DELETE_ORDER_FAILED = 23; // 订单删除失败
 }

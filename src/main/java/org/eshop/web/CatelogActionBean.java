@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,6 +52,19 @@ public class CatelogActionBean extends AbstractActionBean {
             return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, itemList), HttpStatus.OK);
         } catch (CatelogServiceException e) {
             throw new WrapperServiceException(ErrorCode.SEARCH_ITEM_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "itemDetail", method = RequestMethod.GET)
+    public String itemDetail(
+            @RequestParam(value = "itemId", required = true) String itemId,
+            Model model) {
+        try {
+            Item item = catelogService.getItem(itemId);
+            model.addAttribute("item", item);
+            return "product/itemInfo";
+        } catch (CatelogServiceException e) {
+            throw new WrapperServiceException(ErrorCode.GET_ITEM_DETAIL_FAILED);
         }
     }
 }

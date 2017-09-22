@@ -10,16 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestActionBean extends AbstractActionBean {
 
-    @RequestMapping(value = "viewCart", method = RequestMethod.GET)
-    public String showCart() {
-        return "cart/cart";
-    }
-
-    @RequestMapping(value = "itemDetail", method = RequestMethod.GET)
-    public String showItemDetail() {
-        return "product/itemInfo";
-    }
-
     @RequestMapping(value = "colorRes", method = RequestMethod.GET)
     public String showColorResult() {
         return "product/searchByColor";
