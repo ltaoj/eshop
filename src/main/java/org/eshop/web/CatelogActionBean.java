@@ -67,4 +67,14 @@ public class CatelogActionBean extends AbstractActionBean {
             throw new WrapperServiceException(ErrorCode.GET_ITEM_DETAIL_FAILED);
         }
     }
+
+    @RequestMapping(value = "colorRes", method = RequestMethod.GET)
+    public String showColorResult() {
+        return "product/searchByColor";
+    }
+
+    @RequestMapping(value = "shapeRes", method = RequestMethod.GET)
+    public String showShapeResult() {
+        return "product/searchByShape";
+    }
 }
