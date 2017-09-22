@@ -60,10 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/registForm").access("hasRole('USER')")
+                .authorizeRequests().antMatchers("/myInfo").access("hasRole('USER')")
                 .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login")
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").invalidateHttpSession(true)
                 .and().csrf().disable()
                 .headers().frameOptions().sameOrigin();
     }

@@ -23,8 +23,9 @@ public class MyUserDetailService implements UserDetailsService{
     @Autowired
     private SignonDAO signonDAO;
 
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Signon signon = signonDAO.getSignon(userId);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Signon signon = signonDAO.getSignon(username);
+        System.out.println(signon + "****************" + username);
         if (signon == null) {
             throw new UsernameNotFoundException("signon not found");
         } else {

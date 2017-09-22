@@ -6,6 +6,7 @@ import org.eshop.persistence.UserinfoDAO;
 import org.eshop.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hsqldb.rights.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.PersistenceException;
@@ -45,6 +46,21 @@ public class UserinfoDAOimpl extends AbstractDAO implements UserinfoDAO {
         userinfo.setLoginId(loginId);
         userinfo.setPhone(phone);
         updateUserInfo(userinfo, CHANGE_PHONE);
+    }
+
+    public Userinfo getUserinfo(String loginId) throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            Userinfo userinfo = session.get(Userinfo.class, loginId);
+            transaction.commit();
+            return userinfo;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
     }
 
     private void updateUserInfo(Userinfo userinfo, int operateType) {

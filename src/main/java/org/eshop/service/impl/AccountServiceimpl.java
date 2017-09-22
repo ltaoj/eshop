@@ -2,6 +2,7 @@ package org.eshop.service.impl;
 
 import org.eshop.entity.Signon;
 import org.eshop.entity.Supplier;
+import org.eshop.entity.Userinfo;
 import org.eshop.exception.AccountServiceException;
 import org.eshop.persistence.SignonDAO;
 import org.eshop.persistence.SupplierDAO;
@@ -36,5 +37,9 @@ public class AccountServiceimpl implements AccountService {
 
     public void registSupplier(Supplier supplier) throws AccountServiceException {
 
+    }
+
+    public Userinfo getUser(String loginId) throws AccountServiceException {
+        return userinfoDAO.getUserinfo(loginId);
     }
 }

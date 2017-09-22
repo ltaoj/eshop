@@ -91,7 +91,7 @@
             maxmin: false,//最大最小化
             shadeClose: true, //点击遮罩关闭层
             area : ['420px' , '300px'],//区域大小面积
-            content: 'loginForm'//打开之后呈现的html内容
+            content: 'login'//打开之后呈现的html内容
         });
     });
 </script>

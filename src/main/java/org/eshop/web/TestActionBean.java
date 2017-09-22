@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestActionBean extends AbstractActionBean {
 
-    @RequestMapping(value = "myInfo", method = RequestMethod.GET)
-    public String showMyInfo() {
-        return "account/userInfo";
-    }
-
     @RequestMapping(value = "viewCart", method = RequestMethod.GET)
     public String showCart() {
         return "cart/cart";
@@ -34,11 +29,6 @@ public class TestActionBean extends AbstractActionBean {
     @RequestMapping(value = "shapeRes", method = RequestMethod.GET)
     public String showShapeResult() {
         return "product/searchByShape";
-    }
-
-    @RequestMapping(value = "loginForm", method = RequestMethod.GET)
-    public String showLoginForm() {
-        return "account/login";
     }
 
     @RequestMapping(value = "addrModal", method = RequestMethod.GET)

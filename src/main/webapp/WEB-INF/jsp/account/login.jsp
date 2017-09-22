@@ -41,12 +41,12 @@
     <br>
     <div class="layui-field-box">
 
-        <form class="layui-form" action="">
+        <form class="layui-form" name="f" action="<%=request.getContextPath()%>/login" method="POST">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">用户名：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="user_id" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 220px">
+                    <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 220px">
                 </div>
             </div>
             <br>

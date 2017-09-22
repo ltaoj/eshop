@@ -30,4 +30,12 @@ public interface UserinfoDAO {
      * @throws PersistenceException
      */
     void changePhone(String loginId, String phone) throws PersistenceException;
+
+    /**
+     * 获取用户信息
+     * @param loginId
+     * @return
+     * @throws PersistenceException
+     */
+    Userinfo getUserinfo(String loginId) throws PersistenceException;
 }
