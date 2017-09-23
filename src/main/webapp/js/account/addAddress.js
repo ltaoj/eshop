@@ -20,6 +20,10 @@ function addAddress() {
         data: JSON.stringify(json),
         success: function (data) {
             console.log(data);
+            // 关闭窗口
+            window.close()
+            // 重载父窗口
+            window.parent.location.reload();
         }
     })
 }

@@ -21,3 +21,39 @@ function upUserInfo() {
         }
     })
 }
+
+/**
+ * 删除收获地址
+ * @param addrId
+ */
+function deleteAddr(addrId) {
+    $.ajax({
+        url: 'delHarvAddr?addrId=' + addrId,
+        method: 'GET',
+        success: function (data) {
+            console.log(data);
+            window.parent.location.reload();
+        }
+    })
+}
+
+/**
+ * 修改密码
+ */
+function changePwd() {
+    var originPassword = $("#origin_password").val();
+    var password = $("#new_password").val();
+    var repeatPassword = $("#required_password").val();
+    var json = {originPassword: originPassword, password: password, repeatPassword: repeatPassword};
+    $.ajaxSetup({contentType: 'application/json'});
+    $.ajax({
+        url: 'changePwd',
+        method: 'POST',
+        dataType: "json",
+        data: JSON.stringify(json),
+        success: function (data) {
+            console.log(data);
+            window.parent.location.reload();
+        }
+    })
+}

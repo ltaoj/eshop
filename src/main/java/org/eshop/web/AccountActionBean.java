@@ -146,8 +146,8 @@ public class AccountActionBean extends AbstractActionBean {
         }
     }
 
-    @RequestMapping(value = "delHarvAddr", method = RequestMethod.POST)
-    public ResponseEntity<Result> deleteAddress(@RequestParam(value = "addrId" , required = true) int addrId) {
+    @RequestMapping(value = "delHarvAddr", method = RequestMethod.GET)
+    public ResponseEntity<Result> deleteAddress(@RequestParam(value = "addrId" , required = true) Integer addrId) {
         try {
             accountService.deleteHarvestAddr(addrId);
             return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, "收货地址删除成功"), HttpStatus.OK);
@@ -156,7 +156,7 @@ public class AccountActionBean extends AbstractActionBean {
         }
     }
 
-    @RequestMapping(value = "addrList", method = RequestMethod.POST)
+    @RequestMapping(value = "addrList", method = RequestMethod.GET)
     public ResponseEntity<Result> getAddrList() {
         try {
             List<Harvestaddr> harvList = accountService.getHarvestAddr(getPrincipal());
@@ -176,9 +176,9 @@ public class AccountActionBean extends AbstractActionBean {
         }
     }
 
-    @RequestMapping(value = "setDefAddr", method = RequestMethod.POST)
+    @RequestMapping(value = "setDefAddr", method = RequestMethod.GET)
     public ResponseEntity<Result> setDefaultAddress(
-            @RequestParam(value = "addrId", required = true) int addrId,
+            @RequestParam(value = "addrId", required = true) Integer addrId,
             @RequestParam(value = "loginId", required = false) String loginId) {
         try {
             accountService.setDefaultAddr(addrId, loginId);

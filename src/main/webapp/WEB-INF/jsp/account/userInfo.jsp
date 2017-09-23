@@ -135,7 +135,7 @@
                         <td>${addr.phone}</td>
                         <td>${addr.province}${addr.city}${addr.district}${addr.detailAddr}</td>
                         <td>
-                            <span class="layui-badge">删除</span>
+                            <span class="layui-badge" onclick="deleteAddr(${addr.addrId})">删除</span>
                             <span class="layui-badge layui-bg-green">修改</span>
                         </td>
                     </tr>
@@ -153,7 +153,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">初始密码:</label>
                     <div class="layui-input-block">
-                        <input type="password" name="origin_password"  autocomplete="off" class="layui-input" style="width: 300px" placeholder="请输入初始密码">
+                        <input type="password" id="origin_password"  autocomplete="off" class="layui-input" style="width: 300px" placeholder="请输入初始密码">
                     </div>
                 </div>
                 <br>
@@ -161,7 +161,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"> 新密码:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="new_password"  autocomplete="off" class="layui-input" style="width: 300px" placeholder="请输入新密码">
+                        <input type="password" id="new_password"  autocomplete="off" class="layui-input" style="width: 300px" placeholder="请输入新密码">
                     </div>
                 </div>
                 <br>
@@ -169,18 +169,18 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">确认密码:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="required_password"   autocomplete="off" class="layui-input" style="width: 300px" placeholder="请再次输入新密码">
+                        <input type="password" id="required_password"   autocomplete="off" class="layui-input" style="width: 300px" placeholder="请再次输入新密码">
                     </div>
                 </div>
                 <br>
-                <!--保存修改-->
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存修改</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
             </form>
+            <!--保存修改-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" onclick="changePwd()">保存修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

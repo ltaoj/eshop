@@ -39,9 +39,9 @@ public class CatelogActionBean extends AbstractActionBean {
     public ResponseEntity<Result> search(
             @RequestParam(value = "keyword", defaultValue = "") String keyword,
             @RequestParam(value = "type", defaultValue = "name") String type,
-            @RequestParam(value = "byPage", defaultValue = "false") boolean byPage,
-            @RequestParam(value = "page", required = false) int page,
-            @RequestParam(value = "count", required = false) int count) {
+            @RequestParam(value = "byPage", defaultValue = "false") Boolean byPage,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "count", required = false) Integer count) {
         List<Item> itemList = null;
         try {
             if (byPage) {

@@ -41,6 +41,20 @@ public abstract class AbstractActionBean {
             case ErrorCode.GET_ADDRESS_FAILED:
                 error = new Error(e.getErrorCode(), "收货地址信息获取失败");
                 break;
+            case ErrorCode.UPDATE_ADDRESS_FAILED:
+                error = new Error(e.getErrorCode(), "收货地址信息更新失败");
+                break;
+            case ErrorCode.DEFAULT_ADDRESS_SETTING_FAILED:
+                error = new Error(e.getErrorCode(), "默认收货地址修改失败");
+                break;
+            case ErrorCode.ORIGIN_PASSWORD_UNCORRECT:
+                error = new Error(e.getErrorCode(), "原密码不正确");
+                break;
+            case ErrorCode.CHANGE_PASSWORD_FAILED:
+                error = new Error(e.getErrorCode(), "修改密码失败");
+            case ErrorCode.UPDATE_USERINFO_FAILED:
+                error = new Error(e.getErrorCode(), "基本信息修改失败");
+                break;
         }
         return error;
     }
