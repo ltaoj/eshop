@@ -28,7 +28,7 @@
         <mapping class="org.eshop.entity.Item"/>
         <mapping class="org.eshop.entity.Lineitem"/>
         <mapping class="org.eshop.entity.Log"/>
-        <mapping class="org.eshop.entity.Order"/>
+        <mapping class="org.eshop.entity.Orders"/>
         <mapping class="org.eshop.entity.Orderstatus"/>
         <mapping class="org.eshop.entity.Signon"/>
         <mapping class="org.eshop.entity.Supplier"/>

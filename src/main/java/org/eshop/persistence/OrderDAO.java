@@ -1,6 +1,6 @@
 package org.eshop.persistence;
 
-import org.eshop.entity.Order;
+import org.eshop.entity.Orders;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
@@ -12,18 +12,18 @@ public interface OrderDAO {
 
     /**
      * 创建订单信息
-     * @param order
+     * @param Orders
      * @return
      * @throws PersistenceException
      */
-    String insertOrder(Order order) throws PersistenceException;
+    String insertOrder(Orders Orders) throws PersistenceException;
 
     /**
      * 删除订单信息
-     * @param orderId
+     * @param OrderId
      * @throws PersistenceException
      */
-    void deleteOrder(String orderId) throws PersistenceException;
+    void deleteOrder(String OrderId) throws PersistenceException;
 
     /**
      * 获取订单列表
@@ -31,13 +31,13 @@ public interface OrderDAO {
      * @return
      * @throws PersistenceException
      */
-    List<Order> getOrderListByLoginId(String loginId) throws PersistenceException;
+    List<Orders> getOrderListByLoginId(String loginId) throws PersistenceException;
 
     /**
      * 获取订单信息
-     * @param orderId
+     * @param OrderId
      * @return
      * @throws PersistenceException
      */
-    Order getOrder(String orderId) throws PersistenceException;
+    Orders getOrder(String OrderId) throws PersistenceException;
 }

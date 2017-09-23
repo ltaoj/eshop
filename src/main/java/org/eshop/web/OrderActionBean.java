@@ -33,7 +33,7 @@ public class OrderActionBean extends AbstractActionBean {
     public String createOrder(@RequestBody OrderNeeded orderNeeded) {
         try {
             OrderDetail orderDetail = orderService.createOrder(orderNeeded.getCartitemList(), orderNeeded.getHarvestaddr());
-            return "redirect:/orderDetail?orderId=" + orderDetail.getOrder().getOrderId();
+            return "redirect:/orderDetail?orderId=" + orderDetail.getOrders().getOrderId();
         } catch (OrderServiceException e) {
             throw new WrapperServiceException(ErrorCode.CREATE_ORDER_FAILED);
         }

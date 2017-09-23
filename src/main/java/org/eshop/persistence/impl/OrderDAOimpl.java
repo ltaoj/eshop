@@ -1,6 +1,6 @@
 package org.eshop.persistence.impl;
 
-import org.eshop.entity.Order;
+import org.eshop.entity.Orders;
 import org.eshop.persistence.AbstractDAO;
 import org.eshop.persistence.OrderDAO;
 import org.eshop.util.HibernateUtil;
@@ -16,13 +16,13 @@ import java.util.List;
  */
 @Repository
 public class OrderDAOimpl extends AbstractDAO implements OrderDAO {
-    public String insertOrder(Order order) throws PersistenceException {
+    public String insertOrder(Orders Orders) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
-            session.save(order);
+            session.save(Orders);
             transaction.commit();
-            return order.getOrderId();
+            return Orders.getOrderId();
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);
@@ -31,12 +31,12 @@ public class OrderDAOimpl extends AbstractDAO implements OrderDAO {
         }
     }
 
-    public void deleteOrder(String orderId) throws PersistenceException {
+    public void deleteOrder(String OrderId) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
-            Order order = session.load(Order.class, orderId);
-            session.delete(order);
+            Orders Orders = session.load(Orders.class, OrderId);
+            session.delete(Orders);
             transaction.commit();
         } catch (RuntimeException e) {
             transaction.rollback();
@@ -46,12 +46,12 @@ public class OrderDAOimpl extends AbstractDAO implements OrderDAO {
         }
     }
 
-    public List<Order> getOrderListByLoginId(String loginId) throws PersistenceException {
+    public List<Orders> getOrderListByLoginId(String loginId) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
-            String hql = "from Order as o where o.loginId='" + loginId + "'";
-            List<Order> list = session.createQuery(hql).list();
+            String hql = "from Orders as o where o.loginId='" + loginId + "'";
+            List<Orders> list = session.createQuery(hql).list();
             transaction.commit();
             return list;
         } catch (RuntimeException e) {
@@ -62,13 +62,13 @@ public class OrderDAOimpl extends AbstractDAO implements OrderDAO {
         }
     }
 
-    public Order getOrder(String orderId) throws PersistenceException {
+    public Orders getOrder(String OrderId) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
-            Order order = session.get(Order.class, orderId);
+            Orders Orders = session.get(Orders.class, OrderId);
             transaction.commit();
-            return order;
+            return Orders;
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);

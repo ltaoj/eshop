@@ -3,7 +3,6 @@ package org.eshop.service;
 import org.eshop.domain.OrderDetail;
 import org.eshop.entity.Cartitem;
 import org.eshop.entity.Harvestaddr;
-import org.eshop.entity.Order;
 import org.eshop.exception.OrderServiceException;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package org.eshop.domain;
 
 import org.eshop.entity.Lineitem;
-import org.eshop.entity.Order;
+import org.eshop.entity.Orders;
 import org.eshop.entity.Orderstatus;
 
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
  * Created by ltaoj on 2017/9/21.
  */
 public class OrderDetail {
-    private Order order;
+    private Orders orders;
     private Orderstatus orderstatus;
     private List<Lineitem> lineitems;
 
-    public Order getOrder() {
-        return order;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrders(Orders order) {
+        this.orders = order;
     }
 
     public Orderstatus getOrderstatus() {

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,7 +43,7 @@ public class OrderServiceimpl implements OrderService {
     public OrderDetail createOrder(List<Cartitem> cartitemList, Harvestaddr harvestaddr) {
         Date date = new Date();
         String orderId = StringUtil.createOrderId(date);
-        Order order = new Order();
+        Orders order = new Orders();
         order.setOrderId(orderId);
         Supplier supplier = supplierDAO.getSupplier(itemDAO.getItem(cartitemList.get(0).getItemId()).getSupplierId());
         order.setOriginCity(supplier.getCity());
@@ -82,7 +81,7 @@ public class OrderServiceimpl implements OrderService {
         orderstatusDAO.insertOrderstatus(orderstatus);
 
         OrderDetail orderDetail = new OrderDetail();
-        orderDetail.setOrder(order);
+        orderDetail.setOrders(order);
         orderDetail.setLineitems(lineitemList);
         orderDetail.setOrderstatus(orderstatus);
         return orderDetail;
@@ -90,12 +89,12 @@ public class OrderServiceimpl implements OrderService {
 
     public List<OrderDetail> getOrderList(String loginId) {
         List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
-        List<Order> orderList = orderDAO.getOrderListByLoginId(loginId);
+        List<Orders> orderList = orderDAO.getOrderListByLoginId(loginId);
         for (int i = 0;i < orderList.size();i++) {
             OrderDetail orderDetail = new OrderDetail();
             List<Lineitem> lineitemList = lineitemDAO.getLineitemListByOrderId(orderList.get(i).getOrderId());
             Orderstatus orderstatus = orderstatusDAO.getOrderstatus(orderList.get(i).getOrderId());
-            orderDetail.setOrder(orderList.get(i));
+            orderDetail.setOrders(orderList.get(i));
             orderDetail.setLineitems(lineitemList);
             orderDetail.setOrderstatus(orderstatus);
             orderDetailList.add(orderDetail);
@@ -105,13 +104,13 @@ public class OrderServiceimpl implements OrderService {
 
     public List<OrderDetail> getOrderListByStatus(String loginId, int status) throws OrderServiceException {
         List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
-        List<Order> orderList = orderDAO.getOrderListByLoginId(loginId);
+        List<Orders> orderList = orderDAO.getOrderListByLoginId(loginId);
         for (int i = 0;i < orderList.size();i++) {
             Orderstatus orderstatus = orderstatusDAO.getOrderstatus(orderList.get(i).getOrderId());
             if (orderstatus.getStatus() != status) continue;
             OrderDetail orderDetail = new OrderDetail();
             List<Lineitem> lineitemList = lineitemDAO.getLineitemListByOrderId(orderList.get(i).getOrderId());
-            orderDetail.setOrder(orderList.get(i));
+            orderDetail.setOrders(orderList.get(i));
             orderDetail.setLineitems(lineitemList);
             orderDetail.setOrderstatus(orderstatus);
             orderDetailList.add(orderDetail);
@@ -120,11 +119,11 @@ public class OrderServiceimpl implements OrderService {
     }
 
     public OrderDetail getOrderDetail(String orderId) {
-        Order order = orderDAO.getOrder(orderId);
+        Orders order = orderDAO.getOrder(orderId);
         List<Lineitem> lineitemList = lineitemDAO.getLineitemListByOrderId(orderId);
         Orderstatus orderstatus = orderstatusDAO.getOrderstatus(orderId);
         OrderDetail orderDetail = new OrderDetail();
-        orderDetail.setOrder(order);
+        orderDetail.setOrders(order);
         orderDetail.setOrderstatus(orderstatus);
         orderDetail.setLineitems(lineitemList);
         return orderDetail;
