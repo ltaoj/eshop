@@ -2,7 +2,6 @@
  * Created by lenovo on 2017/9/22.
  */
 function regist() {
-    console.log("123");
     var userId = $("#user_id").val();
     var password = $("#password").val();
     var repeatPassword = $("#repeatPassword").val();

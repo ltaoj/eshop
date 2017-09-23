@@ -44,8 +44,6 @@
     {
         margin-right: 20px;
     }
-
-
 </style>
 <div>
     <table>

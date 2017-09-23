@@ -37,9 +37,9 @@
         <tr>
             <td style="width: 80%"><img src="images/main/text.png"></td>
 
-            <td style="width: 200px"><img src="images/main/user.png" id="login"></td>
+            <td style="width: 200px"><a href="<%=request.getContextPath()%>/myInfo"><img src="images/main/user.png"></a></td>
 
-            <td><img src="images/main/cart.png"></td>
+            <td><a href="<%=request.getContextPath()%>/viewCart"><img src="images/main/cart.png"></a></td>
         </tr>
     </table>
 </div>
@@ -78,23 +78,6 @@
     <div>
         <img src="images/main/p1.png">
     </div>
-
-
-
 </div>
-
-<script type="text/javascript">
-    $('#login').on('click', function(){
-        layer.open({
-            type: 2, //弹出层的类型
-            title: '',//弹出框的标题
-            maxmin: false,//最大最小化
-            shadeClose: true, //点击遮罩关闭层
-            area : ['420px' , '300px'],//区域大小面积
-            content: 'login'//打开之后呈现的html内容
-        });
-    });
-</script>
-
 </body>
 </html>

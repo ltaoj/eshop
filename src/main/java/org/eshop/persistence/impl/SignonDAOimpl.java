@@ -75,16 +75,16 @@ public class SignonDAOimpl extends AbstractDAO implements SignonDAO {
         String hql = "update Signon as s";
         switch (operateType) {
             case CHANGE_EMAIL:
-                hql += " set s.email=" + signon.getEmail();
+                hql += " set s.email='" + signon.getEmail() + "'";
                 break;
             case CHANGE_PHONE:
-                hql += " set s.phone=" + signon.getPhone();
+                hql += " set s.phone='" + signon.getPhone() + "'";
                 break;
             case CHANGE_PASSWORD:
-                hql += " set s.password=" + signon.getPassword();
+                hql += " set s.password='" + signon.getPassword() + "'";
                 break;
         }
-        hql += " where s.userId=" + signon.getUserId();
+        hql += " where s.userId='" + signon.getUserId() + "'";
         try {
             session.createQuery(hql).executeUpdate();
             transaction.commit();

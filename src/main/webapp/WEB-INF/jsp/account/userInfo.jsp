@@ -20,6 +20,8 @@
     <script src="js/jquery/jquery-3.2.1.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="plugin/layui/layui.js"></script>
+
+    <script src="js/account/userInfo.js"></script>
 </head>
 
 <style type="text/css">
@@ -59,7 +61,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户ID:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="user_id" value="<c:out value='${user.loginId}'/>"  autocomplete="off" class="layui-input" style="width: 300px" readonly="readonly">
+                        <input type="text" id="user_id" value="<c:out value='${user.loginId}'/>"  autocomplete="off" class="layui-input" style="width: 300px" readonly="readonly">
                     </div>
                 </div>
                 <br>
@@ -67,7 +69,15 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">昵  称:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" value="<c:out value='${user.name}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
+                        <input type="text" id="username" value="<c:out value='${user.name}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
+                    </div>
+                </div>
+                <br>
+                <!--性别-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性  别:</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="sex" <c:if test="${user.sex == 0}">value="女"</c:if><c:if test="${user.sex == 1}">value="男"</c:if> autocomplete="off" class="layui-input" style="width: 300px">
                     </div>
                 </div>
                 <br>
@@ -75,7 +85,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮  箱:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="email" value="<c:out value='${user.email}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
+                        <input type="text" id="email" value="<c:out value='${user.email}'/>"  autocomplete="off" class="layui-input" style="width: 300px">
                     </div>
                 </div>
                 <br>
@@ -83,18 +93,18 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号码:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="phone" value="<c:out value='${user.phone}'/>"  autocomplete="off" class="layui-input" style="width: 300px" >
+                        <input type="text" id="phone" value="<c:out value='${user.phone}'/>"  autocomplete="off" class="layui-input" style="width: 300px" >
                     </div>
                 </div>
                 <br>
                 <!--保存修改-->
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存修改</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
             </form>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" onclick="upUserInfo()">保存修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
         </div>
 
         <!--收获地址-->

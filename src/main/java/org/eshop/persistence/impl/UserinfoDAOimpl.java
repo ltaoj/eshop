@@ -74,15 +74,16 @@ public class UserinfoDAOimpl extends AbstractDAO implements UserinfoDAO {
         switch (operateType) {
             case CHANGE_BASIC_INFO:
                 hql += " set u.sex=" + userinfo.getSex();
+                hql += ", u.name='" + userinfo.getName() + "'";
                 break;
             case CHANGE_EMAIL:
-                hql += " set u.email=" + userinfo.getEmail();
+                hql += " set u.email='" + userinfo.getEmail() + "'";
                 break;
             case CHANGE_PHONE:
-                hql += " set u.phone=" + userinfo.getPhone();
+                hql += " set u.phone='" + userinfo.getPhone() + "'";
                 break;
         }
-        hql += " where u.loginId=" + userinfo.getLoginId();
+        hql += " where u.loginId='" + userinfo.getLoginId() + "'";
         try {
             session.createQuery(hql).executeUpdate();
             transaction.commit();
