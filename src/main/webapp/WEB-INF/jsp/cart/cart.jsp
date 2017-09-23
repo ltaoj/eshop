@@ -25,7 +25,7 @@
     <script src="js/cart/data.js"></script>
     <script type="text/javascript">
         $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-        $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+            $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
         $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
 </head>

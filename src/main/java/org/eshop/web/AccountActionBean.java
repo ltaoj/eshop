@@ -120,10 +120,10 @@ public class AccountActionBean extends AbstractActionBean {
         }
     }
 
-    @RequestMapping(value = "isExist", method = RequestMethod.GET)
-    public ResponseEntity<Result> isUserExist() {
+    @RequestMapping(value = "isUserExist", method = RequestMethod.GET)
+    public ResponseEntity<Result> isUserExist(@RequestParam(value = "loginId", required = true) String loginId) {
         try {
-            Userinfo userinfo = accountService.getUser(getPrincipal());
+            Userinfo userinfo = accountService.getUser(loginId);
             return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, userinfo != null), HttpStatus.OK);
         } catch (AccountServiceException e) {
             throw new WrapperServiceException(ErrorCode.GET_USERINFO_FAILEED);
@@ -179,7 +179,7 @@ public class AccountActionBean extends AbstractActionBean {
     @RequestMapping(value = "setDefAddr", method = RequestMethod.POST)
     public ResponseEntity<Result> setDefaultAddress(
             @RequestParam(value = "addrId", required = true) int addrId,
-            @RequestParam(value = "loginId", required = true) String loginId) {
+            @RequestParam(value = "loginId", required = false) String loginId) {
         try {
             accountService.setDefaultAddr(addrId, loginId);
             return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, "默认收货地址设置成功"), HttpStatus.OK);
