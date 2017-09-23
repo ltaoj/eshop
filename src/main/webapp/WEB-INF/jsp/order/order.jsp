@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +20,7 @@
     <script src="js/jquery/jquery-3.2.1.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="plugin/layui/layui.js"></script>
+    <script src="js/order/order.js"></script>
 </head>
 <body>
 
@@ -79,53 +84,34 @@
                 </thead>
                 <tbody>
                 <!--第一行待付商品-->
-                <tr>
-                    <td>09Z16</td>
-                    <td>2017-09-11</td>
-                    <td><img src="images/preview/pan-6/pink_pan2.png"></td>
-                    <td>德国进口精致不锈钢奶锅</td>
-                    <td>189.0</td>
-                    <td>1</td>
-                    <td>蓝色不梦幻</td>
-                    <td>18079086223</td>
-                    <td>湖南省长沙市天心区铁道学院</td>
-                    <td>189.0</td>
-                    <td><span class="layui-badge" id="delete">删除订单</span></td>
-                    <td><span class="layui-badge layui-bg-green">待付款</span></td>
-                </tr>
-                <!--第二行取消商品-->
-                <tr>
-                    <td>09Z17</td>
-                    <td>2017-03-09</td>
-                    <td><img src="images/preview/eyeshade&neckpillow-9/red_neckpillow1.png"></td>
-                    <td>国产优质棉花填充枕颈</td>
-                    <td>39.0</td>
-                    <td>1</td>
-                    <td>哇哈哈</td>
-                    <td>13214523564</td>
-                    <td>北京市朝阳区明珠花园</td>
-                    <td>39.0</td>
-                    <td><span class="layui-badge" id="delete">删除订单</span></td>
-                    <td><span class="layui-badge">已取消</span></td>
-                </tr>
-                <!--第三行已付商品-->
-                <tr>
-                    <td>09Z1</td>
-                    <td>2017-01-11</td>
-                    <td><img src="images/preview/box-8/yellow_box2.png"></td>
-                    <td>品质棉麻衣物收纳袋</td>
-                    <td>89.0</td>
-                    <td>1</td>
-                    <td>忘词王</td>
-                    <td>18179287293</td>
-                    <td>江西省新余市大一中学</td>
-                    <td>89.0</td>
-                    <td>
-                        <span class="layui-badge" id="delete">删除订单</span>
-                        <a href="<%=request.getContextPath()%>/orderDetail"><span class="layui-badge layui-bg-orange">查看详情</span></a>
-                    </td>
-                    <td><span class="layui-badge layui-bg-blue">已付款</span></td>
-                </tr>
+                <c:forEach var="orderDetail" items="${allOrderDetailList}">
+                    <tr id="${orderDetail.orders.orderId}">
+                        <td>${orderDetail.orders.orderId}</td>
+                        <td>${orderDetail.orders.orderDate}</td>
+                        <td><img src="images/preview/pan-6/pink_pan2.png"></td>
+                        <td>德国进口精致不锈钢奶锅</td>
+                        <td>189.0</td>
+                        <td>1</td>
+                        <td>${orderDetail.orders.name}</td>
+                        <td>18079086223</td>
+                        <td>${orderDetail.orders.billProvince}${orderDetail.orders.billCity}${orderDetail.orders.billDistrict}</td>
+                        <td>${orderDetail.orders.totalPrice}</td>
+                        <c:if test="${orderDetail.orderstatus.status == 0}">
+                            <td>
+                                <span class="layui-badge" id="cancel" onclick="cancelOrder(${orderDetail.orders.orderId})">取消订单</span>
+                                <a href="<%=request.getContextPath()%>/orderDetail?orderId=${orderDetail.orders.orderId}"><span class="layui-badge layui-bg-orange">查看详情</span></a>
+                            </td>
+                            <td><span class="layui-badge layui-bg-green">待付款</span></td>
+                        </c:if>
+                        <c:if test="${orderDetail.orderstatus.status == 1}">
+                            <td>
+                                <span class="layui-badge" id="delete" onclick="deleteOrder(${orderDetail.orders.orderId})">删除订单</span>
+                                <a href="<%=request.getContextPath()%>/orderDetail?orderId=${orderDetail.orders.orderId}"><span class="layui-badge layui-bg-orange">查看详情</span></a>
+                            </td>
+                            <td><span class="layui-badge">已取消</span></td>
+                        </c:if>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -162,22 +148,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>082g1</td>
-                    <td>2017-09-11</td>
-                    <td><img src="images/preview/pan-6/pink_pan2.png"></td>
-                    <td>德国进口精致不锈钢奶锅</td>
-                    <td>189.0</td>
-                    <td>1</td>
-                    <td>蓝色不梦幻</td>
-                    <td>18079086223</td>
-                    <td>湖南省长沙市天心区铁道学院</td>
-                    <td>189.0</td>
-                    <td>
-                        <span class="layui-badge layui-bg-green">立即付款</span>
-                        <span class="layui-badge" id="delete">取消订单</span>
-                    </td>
-                </tr>
+                <c:forEach var="orderDetail" items="${unPayOrderDetailList}">
+                    <tr id="${orderDetail.orders.orderId}">
+                        <td>${orderDetail.orders.orderId}</td>
+                        <td>${orderDetail.orders.orderDate}</td>
+                        <td><img src="images/preview/pan-6/pink_pan2.png"></td>
+                        <td>德国进口精致不锈钢奶锅</td>
+                        <td>189.0</td>
+                        <td>1</td>
+                        <td>${orderDetail.orders.name}</td>
+                        <td>18079086223</td>
+                        <td>${orderDetail.orders.billProvince}${orderDetail.orders.billCity}${orderDetail.orders.billDistrict}</td>
+                        <td>${orderDetail.orders.totalPrice}</td>
+                        <td>
+                            <span class="layui-badge" id="delete" onclick="cancelOrder(${orderDetail.orders.orderId})">取消订单</span>
+                            <a href="<%=request.getContextPath()%>/orderDetail?orderId=${orderDetail.orders.orderId}"><span class="layui-badge layui-bg-orange">查看详情</span></a>
+                        </td>
+                        <td><span class="layui-badge layui-bg-green">待付款</span></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -214,36 +203,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>082g2</td>
-                    <td>2017-09-11</td>
-                    <td><img src="images/preview/pan-6/pink_pan2.png"></td>
-                    <td>德国进口精致不锈钢奶锅</td>
-                    <td>189.0</td>
-                    <td>1</td>
-                    <td>蓝色不梦幻</td>
-                    <td>18079086223</td>
-                    <td>湖南省长沙市天心区铁道学院</td>
-                    <td>189.0</td>
-                    <td><span class="layui-badge" id="delete">删除订单</span></td>
-                </tr>
+                <c:forEach var="orderDetail" items="${cancelOrderDetailList}">
+                    <tr id="${orderDetail.orders.orderId}">
+                        <td>${orderDetail.orders.orderId}</td>
+                        <td>${orderDetail.orders.orderDate}</td>
+                        <td><img src="images/preview/pan-6/pink_pan2.png"></td>
+                        <td>德国进口精致不锈钢奶锅</td>
+                        <td>189.0</td>
+                        <td>1</td>
+                        <td>${orderDetail.orders.name}</td>
+                        <td>18079086223</td>
+                        <td>${orderDetail.orders.billProvince}${orderDetail.orders.billCity}${orderDetail.orders.billDistrict}</td>
+                        <td>${orderDetail.orders.totalPrice}</td>
+                        <td>
+                            <span class="layui-badge" id="delete" onclick="${orderDetail.orders.orderId}">删除订单</span>
+                            <a href="<%=request.getContextPath()%>/orderDetail?orderId=${orderDetail.orders.orderId}"><span class="layui-badge layui-bg-orange">查看详情</span></a>
+                        </td>
+                        <td><span class="layui-badge">已取消</span></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
 
     </div>
 </div>
-
-
-<script type="text/javascript">
-    layui.use('element', function(){
-        var element = layui.element;
-
-        //…
-    });
-</script>
 </table>
-
-
 </body>
 </html>
