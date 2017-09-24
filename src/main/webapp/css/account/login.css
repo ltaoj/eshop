@@ -1,0 +1,26 @@
+.login
+{
+    position: absolute;
+    right:10%;
+    top:25%;
+}
+.register
+{
+    font-size: 12px;
+    position: absolute;
+    left: 60%;
+    color: #999999;
+}
+.find_password
+{
+    font-size: 12px;
+    position: absolute;
+    left: 12%;
+    color: #999999;
+}
+.pic_play
+{
+    position: absolute;
+    left: 3%;
+    top:27%;
+}

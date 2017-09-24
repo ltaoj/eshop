@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -7,35 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ page isELIgnored="false"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>我的订单</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
-    <!--引入js文件-->
-    <script src="js/jquery/jquery-3.2.1.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="plugin/layui/layui.js"></script>
-    <script src="js/order/order.js"></script>
-</head>
-<body>
-
-<div class="navigation">
-    <table>
-        <tr>
-            <td style="width: 80%"><img src="images/main/text.png"></td>
-
-            <td style="width: 200px"><a href="<%=request.getContextPath()%>/myInfo"><img src="images/main/user.png" id="login"></a></td>
-
-            <td><img src="images/main/cart.png"></td>
-        </tr>
-    </table>
-</div>
-
+<%@ include file="../public/includeTop.jsp" %>
 
 <fieldset class="layui-elem-field layui-field-title" >
     <legend>我的订单</legend>
@@ -43,9 +14,9 @@
 <br>
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li class="layui-this">所有订单<span class="layui-badge layui-bg-blue">99</span></li>
-        <li> 待付款<span class="layui-badge layui-bg-green">2</span></li>
-        <li> 已取消<span class="layui-badge">5</span></li>
+        <li class="layui-this">所有订单<span class="layui-badge layui-bg-blue">${allOrderDetailList.size()}</span></li>
+        <li> 待付款<span class="layui-badge layui-bg-green">${unPayOrderDetailList.size()}</span></li>
+        <li> 已取消<span class="layui-badge">${cancelOrderDetailList.size()}</span></li>
     </ul>
 
     <div class="layui-tab-content">
@@ -229,5 +200,8 @@
     </div>
 </div>
 </table>
+
+<%--specail script--%>
+<script src="js/order/order.js"></script>
 </body>
 </html>

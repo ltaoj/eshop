@@ -13,14 +13,6 @@
 <script src="js/layer/layer.js"></script>
 <script src="plugin/layui/layui.js"></script>
 
-<script src="js/account/addAddress.js"></script>
-
-<style type="text/css">
-
-</style>
-
-
-
 <!--登录表单-->
 
 <fieldset class="layui-elem-field" style="width: 400px">
@@ -91,6 +83,6 @@
         </div>
     </div>
 </fieldset>
-<script>
 
-</script>
+<%--special script--%>
+<script src="js/account/addAddress.js"></script>

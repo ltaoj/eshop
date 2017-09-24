@@ -6,241 +6,125 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>我的购物车</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link href="css/jquery/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
-    <link href="css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
-    <link href="css/data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="css/cart/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="js/jquery/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery/jquery-ui-1.8.10.custom.min.js"></script>
-    <script src="js/prototypePre.js"></script>
-    <script src="js/data/document.js"></script>
-    <script src="js/prototypePost.js"></script>
-    <script src="js/cart/data.js"></script>
-    <script type="text/javascript">
-        $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-            $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
-        $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
-    </script>
-</head>
-<body>
-<div id="base" class="">
+<%@ include file="../public/includeTop.jsp" %>
+<!--我的购物车-->
+<fieldset class="layui-elem-field">
+    <legend>我的购物车</legend>
+    <div class="layui-field-box">
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+                <col width="150">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>选中</th>
+                <th>商品</th>
+                <th>描述</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="cartitem" items="${cartitemList}">
+                <tr>
+                    <td><input name="choose" id="" type="checkbox"></td>
+                    <td><img src="images/preview/pan-6/pink_pan2.png"></td>
+                    <td>德国进口精致不锈钢奶锅</td>
+                    <td>${cartitem.unitprice}</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="demo"><a href="#"><span id="minus"></span></a></td>
+                                <td>
+                                    <span id="count">${cartitem.quantity}</span>
+                                </td>
+                                <td id="demo2"><a href="#"><span id="add"></span></a></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td><a href="#"><span class="layui-badge layui-bg-cyan" id="modify">编辑</span></a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 
-    <!-- Unnamed (图片) -->
-    <div id="u184" class="ax_default image">
-        <img id="u184_img" class="img " src="images/main/logo.png"/>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u185" class="ax_default _一级标题">
-        <div id="u185_div" class=""></div>
-        <div id="u185_text" class="text ">
-            <p><span>Whew</span></p>
+        <br>
+        <br>
+        <div class="table">
+            <table>
+                <tr>
+                    <td style="width: 60%"><input name="choose" id="" type="checkbox">  全选（共计：${cartitemList.size()}件）</td>
+                    <td style="width: 15%">合计: </td>
+                    <td style="width: 15%">
+                        <button class="layui-btn layui-btn-danger">删除</button>
+                        <button class="layui-btn">去结算</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
+</fieldset>
+<script type="text/javascript">
 
-    <!-- Unnamed (表格) -->
-    <div id="u186" class="ax_default">
+    $(document).ready(function(){
+        $("#demo").hide();
+        $("#demo2").hide();
+        //$(".hide").hide();
+    });
 
-        <!-- Unnamed (单元格) -->
-        <div id="u187" class="ax_default table_cell">
-            <img id="u187_img" class="img " src="images/cart/u187.png"/>
-        </div>
+    $('#modify').on('click', function(){
+        //点击之后将input输入框变为不可编辑
+        //$('#product_count').attr("disabled",false);
+        //改变span的样式
+        var content=$("#modify").text();
+        if(content=="编辑")
+        {
+            $("#modify").attr("class", "layui-badge layui-bg-green");
+            //完成字样
+            $("#modify").text("完成");
 
-        <!-- Unnamed (单元格) -->
-        <div id="u188" class="ax_default table_cell">
-            <img id="u188_img" class="img " src="images/cart/u188.png"/>
-            <div id="u188_text" class="text ">
-                <p><span>商品信息</span></p>
-            </div>
-        </div>
+            $("#demo").show();
+            $("#demo2").show();
+            $("#minus").text("-");
+            $("#add").text("+");
+        }
+        else
+        {
+            $("#modify").attr("class", "layui-badge layui-bg-cyan");
+            //完成字样
+            $("#modify").text("编辑");
 
-        <!-- Unnamed (单元格) -->
-        <div id="u189" class="ax_default table_cell">
-            <img id="u189_img" class="img " src="images/cart/u189.png"/>
-            <div id="u189_text" class="text ">
-                <p><span>单价</span></p>
-            </div>
-        </div>
+            $("#demo").hide();
+            $("#demo2").hide();
+        }
 
-        <!-- Unnamed (单元格) -->
-        <div id="u190" class="ax_default table_cell">
-            <img id="u190_img" class="img " src="images/cart/u190.png"/>
-            <div id="u190_text" class="text ">
-                <p><span>数量</span></p>
-            </div>
-        </div>
 
-        <!-- Unnamed (单元格) -->
-        <div id="u191" class="ax_default table_cell">
-            <img id="u191_img" class="img " src="images/cart/u190.png"/>
-            <div id="u191_text" class="text ">
-                <p><span>小计</span></p>
-            </div>
-        </div>
+    });
 
-        <!-- Unnamed (单元格) -->
-        <div id="u192" class="ax_default table_cell">
-            <img id="u192_img" class="img " src="images/cart/u192.png"/>
-            <div id="u192_text" class="text ">
-                <p><span>操作</span></p>
-            </div>
-        </div>
+    $('#demo').on('click', function(){
 
-        <!-- Unnamed (单元格) -->
-        <div id="u193" class="ax_default table_cell">
-            <img id="u193_img" class="img " src="images/cart/u193.png"/>
-        </div>
+        var count=$('#count').text();
+        if(count!=1)
+        {
+            count--;
+        }
+        $('#count').text(count);
 
-        <!-- Unnamed (单元格) -->
-        <div id="u194" class="ax_default table_cell">
-            <img id="u194_img" class="img " src="images/cart/u194.png"/>
-        </div>
+    });
 
-        <!-- Unnamed (单元格) -->
-        <div id="u195" class="ax_default table_cell">
-            <img id="u195_img" class="img " src="images/cart/u195.png"/>
-        </div>
+    $('#demo2').on('click', function(){
 
-        <!-- Unnamed (单元格) -->
-        <div id="u196" class="ax_default table_cell">
-            <img id="u196_img" class="img " src="images/cart/u196.png"/>
-        </div>
+        var count=$('#count').text();
+        count++;
+        $('#count').text(count);
 
-        <!-- Unnamed (单元格) -->
-        <div id="u197" class="ax_default table_cell">
-            <img id="u197_img" class="img " src="images/cart/u196.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u198" class="ax_default table_cell">
-            <img id="u198_img" class="img " src="images/cart/u198.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u199" class="ax_default table_cell">
-            <img id="u199_img" class="img " src="images/cart/u199.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u200" class="ax_default table_cell">
-            <img id="u200_img" class="img " src="images/cart/u200.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u201" class="ax_default table_cell">
-            <img id="u201_img" class="img " src="images/cart/u201.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u202" class="ax_default table_cell">
-            <img id="u202_img" class="img " src="images/cart/u202.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u203" class="ax_default table_cell">
-            <img id="u203_img" class="img " src="images/cart/u202.png"/>
-        </div>
-
-        <!-- Unnamed (单元格) -->
-        <div id="u204" class="ax_default table_cell">
-            <img id="u204_img" class="img " src="images/cart/u204.png"/>
-        </div>
-    </div>
-
-    <!-- Unnamed (复选框) -->
-    <div id="u205" class="ax_default checkbox">
-        <label for="u205_input" style="position: absolute;">
-            <div id="u205_text" class="text ">
-                <p><span>全选</span></p>
-            </div>
-        </label>
-        <input id="u205_input" type="checkbox" value="checkbox"/>
-    </div>
-
-    <!-- Unnamed (图片) -->
-    <div id="u206" class="ax_default image">
-        <img id="u206_img" class="img " src="images/cart/u206.png"/>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u207" class="ax_default label">
-        <div id="u207_div" class=""></div>
-        <div id="u207_text" class="text ">
-            <p><span>商品信息</span></p>
-        </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u208" class="ax_default label">
-        <div id="u208_div" class=""></div>
-        <div id="u208_text" class="text ">
-            <p><span>删&nbsp; 除</span></p>
-        </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u209" class="ax_default box_1">
-        <div id="u209_div" class=""></div>
-    </div>
-
-    <!-- Unnamed (复选框) -->
-    <div id="u210" class="ax_default checkbox">
-        <label for="u210_input" style="position: absolute;">
-            <div id="u210_text" class="text " style="display:none; visibility: hidden">
-                <p></p>
-            </div>
-        </label>
-        <input id="u210_input" type="checkbox" value="checkbox"/>
-    </div>
-
-    <!-- Unnamed (复选框) -->
-    <div id="u211" class="ax_default checkbox">
-        <label for="u211_input" style="position: absolute;">
-            <div id="u211_text" class="text ">
-                <p><span>&nbsp; 已选（）</span></p>
-            </div>
-        </label>
-        <input id="u211_input" type="checkbox" value="checkbox"/>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u212" class="ax_default label">
-        <div id="u212_div" class=""></div>
-        <div id="u212_text" class="text ">
-            <p><span>批量删除</span></p>
-        </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u213" class="ax_default label">
-        <div id="u213_div" class=""></div>
-        <div id="u213_text" class="text ">
-            <p><span>应付金额：</span></p>
-        </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u214" class="ax_default label">
-        <div id="u214_div" class=""></div>
-        <div id="u214_text" class="text ">
-            <p><span>￥</span></p>
-        </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u215" class="ax_default button">
-        <div id="u215_div" class=""></div>
-        <div id="u215_text" class="text ">
-            <p><span>下单</span></p>
-        </div>
-    </div>
-</div>
+    });
+</script>
 </body>
 </html>

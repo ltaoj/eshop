@@ -1,0 +1,19 @@
+.layui-input-block
+{
+    width: 300px;
+}
+.layui-field-box
+{
+    margin-left: 32%;
+}
+.logoPic
+{
+    width: 50%;
+    height: 50%;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.loginTip
+{
+    margin-right: 20px;
+}

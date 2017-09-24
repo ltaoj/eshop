@@ -19,32 +19,8 @@
     <script src="js/jquery/jquery-3.2.1.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="plugin/layui/layui.js"></script>
-
-    <script src="js/account/emcode.js"></script>
-    <script src="js/account/register.js"></script>
 </head>
 <body>
-<style type="text/css">
-    .layui-input-block
-    {
-        width: 300px;
-    }
-    .layui-field-box
-    {
-        margin-left: 32%;
-    }
-    .logoPic
-    {
-        width: 50%;
-        height: 50%;
-        margin-left: 10px;
-        margin-top: 20px;
-    }
-    .loginTip
-    {
-        margin-right: 20px;
-    }
-</style>
 <div>
     <table>
         <tr>
@@ -55,7 +31,7 @@
                 <img src="images/main/title1.png">
             </td>
             <td>
-                <p><span class="loginTip">已有账号，立即登录</span></p>
+                <p><span class="loginTip"><a href="<%=request.getContextPath()%>/login">已有账号，立即登录</a></span></p>
             </td>
         </tr>
     </table>
@@ -144,9 +120,12 @@
         </div>
     </div>
 </fieldset>
-<script type="text/javascript">
 
+<%--special script--%>
+<script src="js/account/emcode.js"></script>
+<script src="js/account/register.js"></script>
 
-</script>
+<%--special css--%>
+<link rel="stylesheet" href="css/account/register.css">
 </body>
 </html>

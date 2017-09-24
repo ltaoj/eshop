@@ -7,32 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ page isELIgnored="false"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>个人信息</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
-    <!--引入js文件-->
-    <script src="js/jquery/jquery-3.2.1.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="plugin/layui/layui.js"></script>
-
-    <script src="js/account/userInfo.js"></script>
-</head>
-
-<style type="text/css">
-    .user_info
-    {
-        margin-left: 26%;
-        margin-top: 10%;
-    }
-</style>
-
-<body>
+<%@ include file="../public/includeTop.jsp" %>
 
 <div class="layui-tab user_info">
     <ul class="layui-tab-title" >
@@ -205,5 +180,9 @@
         //…
     });
 </script>
+<%--special css--%>
+<link rel="stylesheet" href="css/account/userInfo.css"/>
+<%--special script--%>
+<script src="js/account/userInfo.js"></script>
 </body>
 </html>
