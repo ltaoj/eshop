@@ -15,7 +15,7 @@ function searchByColor(obj){
         url: "search",
         method: "GET",
         dateType: "json",
-        data: JSON.stringify(json),
+        data: json,
         success: function (data) {
             console.log(data);
             if(data.result =="success"){

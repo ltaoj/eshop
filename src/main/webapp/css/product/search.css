@@ -1,0 +1,95 @@
+.mainbody {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.longPic {
+    width: 150px;
+    display: block;
+}
+
+.longPic ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.longPic ul {
+    width: 150px;
+    background-color: #4D7365;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.longPic ul li {
+    flex: 1;
+    margin: 20px 0;
+    align-items: center;
+    text-align: center;
+}
+
+.longPic ul li a img {
+    width: 50px;
+    height: 50px;
+}
+
+.body-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.br-right {
+    width: 100%;
+    position: relative;
+}
+
+.search {
+    display: inline-block;
+}
+
+.search ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.search ul li {
+    margin-right: 20px;
+}
+
+.shape {
+    float: right;
+    display: inline-block;
+}
+
+.color {
+    float: right;
+    display: inline-block;
+}
+
+.pic {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.pic > img {
+    width: 20%;
+}
+
+.pic img {
+    box-shadow: 0px 0px 4px #b2b2b2;
+
+}
+
+.pic img:hover {
+    box-shadow: 0px 0px 8px #b2b2b2;
+}

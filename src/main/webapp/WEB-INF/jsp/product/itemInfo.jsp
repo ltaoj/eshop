@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
 <!--引入js文件-->
 <script src="js/jquery/jquery-3.2.1.min.js"></script>
@@ -39,7 +42,7 @@
     <br>
     <table>
         <tr>
-            <td><img src="images/preview/cup-5/black_cup1.png"></td>
+            <td><img src="${item.description}"></td>
             <td style="width: 100px"></td>
             <td>数量：
                 <button id="minus" class="layui-btn layui-btn-radius layui-btn-primary">-</button>
@@ -56,9 +59,9 @@
         </tr>
     </table>
 
-    <div class="description"><p><span class="text">德国进口黑色琉璃水晶杯</span></p></div>
+    <div class="description"><p><span class="text">${item.name}</span></p></div>
 
-    <div class="price"><p><span class="text">19.8 × </span>
+    <div class="price"><p><span class="text">${item.listprice} × </span>
         <span class="text" id="count1">1</span></p>
     </div>
 

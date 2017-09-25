@@ -11,7 +11,8 @@
 <head>
     <title>按商品形状分类</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
+    <link rel="stylesheet" href="plugin/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/product/search.css" />
     <script src="js/jquery/jquery-3.2.1.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="js/product/searchByShape.js"></script>
@@ -20,146 +21,80 @@
 </head>
 <body>
 
-<style type="text/css">
-
-    .longPic
-    {
-        margin-left: 50px;
-
-    }
-
-    .container
-    {
-        background-image: url(images/main/longPic.png);
-        width: 12%;
-        height: 1000px;
-    }
-    .shape
-    {
-        position:absolute;
-        right: 10%;
-        top: 8%;
-    }
-    .product_shape
-    {
-        width: 250px;
-        height: 250px;
-    }
-    .pic
-    {
-        position:absolute;
-        left:200px;
-        top:110px;
-    }
-    .search
-    {
-        position:absolute;
-        left: 20%;
-        top: 8%;
-    }
-</style>
-
-<div class="container">
+<div class="mainbody">
     <div class="longPic">
-        <table>
+        <ul>
             <!--<tr><td><img src="../images/main/logo.png" ></td></tr>-->
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-                <td><a href="<%=request.getContextPath()%>/"><img class="icon" src="images/shape/home.png" /></a></td>
-            </tr>
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-                <td><a href="<%=request.getContextPath()%>/shapeRes"><img class="icon" src="images/shape/shape.png" /></a></td>
-            </tr>
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td><a href="<%=request.getContextPath()%>/colorRes"><img class="icon" src="images/shape/color.png" /></a></td></tr>
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td><a href="<%=request.getContextPath()%>/viewCart"><img class="icon" src="images/shape/cart.png" /></a></td></tr>
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td><a href="<%=request.getContextPath()%>/orderList"><img class="icon" src="images/shape/bill.png" /></a></td></tr>
-
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td><a href="###"><img class="icon" src="images/shape/service.png" /></a></td></tr>
-
-        </table>
+            <li></li>
+            <li><a href="<%=request.getContextPath()%>/"><img class="icon" src="images/shape/home.png" /></a></li>
+            <li><a href="<%=request.getContextPath()%>/shapeRes"><img class="icon" src="images/shape/shape.png" /></a></li>
+            <li><a href="<%=request.getContextPath()%>/colorRes"><img class="icon" src="images/shape/color.png" /></a></li>
+            <li><a href="<%=request.getContextPath()%>/viewCart"><img class="icon" src="images/shape/cart.png" /></a></li>
+            <li><a href="<%=request.getContextPath()%>/orderList"><img class="icon" src="images/shape/bill.png" /></a></li>
+            <li><a href="###"><img class="icon" src="images/shape/service.png" /></a></li>
+        </ul>
     </div>
-</div>
 
 
-<!--商品搜索框-->
-<div class="search">
-    <table>
-        <tr>
-            <td> <input type="text" id="search" name="keyword" placeholder="请输入商品名称" autocomplete="off" class="layui-input" style="width: 200px"></td>
-            <td>&nbsp;&nbsp;</td>
-            <td><button class="layui-btn layui-btn-radius"><img onclick="searchByName()" src="images/shape/zoom.png" style="width: 24px;height: 24px"></button></td>
-        </tr>
-    </table>
-</div>
+    <!--商品搜索框-->
+    <div class="body-right">
+        <div class="br-right">
+            <div class="search">
+                <ul>
+                    <li><input type="text" id="search" name="keyword" placeholder="请输入商品名称" autocomplete="off" class="layui-input" style="width: 200px"></li>
+                    <li><button class="layui-btn layui-btn-radius"><img onclick="searchByName()" src="images/shape/zoom.png" style="width: 24px;height: 24px"></li>
+                </ul>
+            </div>
 
-<!--形状-->
-<div class="shape">
-    <table>
-        <tr>
-            <td><img id="圆形" onclick="searchByShape(this)" src="images/shape/circle.png" style="width: 40px;height: 40px"></td>
-            <td>&nbsp;&nbsp;&nbsp;</td>
-            <td><img id="矩形" onclick="searchByShape(this)" src="images/shape/rectangle.png" style="width: 40px;height: 40px"></td>
-            <td>&nbsp;&nbsp;&nbsp;</td>
-            <td><img id="线性" onclick="searchByShape(this)" src="images/shape/stripe.png" style="width: 40px;height: 40px"></td>
-        </tr>
-    </table>
-</div>
+            <!--形状-->
+            <div class="shape">
+                <table>
+                    <tr>
+                        <td><a href="###"><img id="圆形" onclick="searchByShape(this)" src="images/shape/circle.png" style="width: 40px;height: 40px"></a></td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td><a href="###"><img id="矩形" onclick="searchByShape(this)" src="images/shape/rectangle.png" style="width: 40px;height: 40px"></a></td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td><a href="###"><img id="线性" onclick="searchByShape(this)" src="images/shape/stripe.png" style="width: 40px;height: 40px"></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-<!--商品展示-->
-<div class="pic">
-    <table>
-        <tr>
-            <td><img class="product_shape" src="images/preview/cup-5/black_cup1.png"></td>
-            <td><img class="product_shape" src="images/preview/cup-5/black_cup2.png"></td>
-            <td><img class="product_shape" src="images/preview/cup-5/yellow_cup1.png"></td>
-            <td><img class="product_shape" src="images/preview/cup-5/blue_cup.png"></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+        <!--商品展示-->
+        <div id="pic" class="pic">
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
+              <%--<table>--%>
+                <%--<tr>--%>
+                <%--<td><img class="product_shape" src="images/preview/cup-5/black_cup1.png"></td>--%>
+                <%--<td><img class="product_shape" src="images/preview/cup-5/black_cup2.png"></td>--%>
+                <%--<td><img class="product_shape" src="images/preview/cup-5/yellow_cup1.png"></td>--%>
+                <%--<td><img class="product_shape" src="images/preview/cup-5/blue_cup.png"></td>--%>
+                <%--<td></td>--%>
+                <%--</tr>--%>
+                <%--<tr>--%>
+                <%--<td></td>--%>
+                <%--<td></td>--%>
+                <%--<td></td>--%>
+                <%--<td></td>--%>
+            <%--<td></td>--%>
+                <%--</tr>--%>
+                <%--<tr>--%>
+                    <%--<td></td>--%>
+                    <%--<td></td>--%>
+                    <%--<td></td>--%>
+                    <%--<td></td>--%>
+                    <%--<td></td>--%>
+                <%--</tr>--%>
+            <%--</table>--%>
+        </div>
+    </div>
 </div>
 </body>
 </html>
