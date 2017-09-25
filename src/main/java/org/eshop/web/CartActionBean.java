@@ -1,5 +1,6 @@
 package org.eshop.web;
 
+import org.eshop.domain.CartItemItem;
 import org.eshop.domain.CartItemList;
 import org.eshop.domain.ErrorCode;
 import org.eshop.domain.Result;
@@ -89,7 +90,7 @@ public class CartActionBean extends AbstractActionBean {
     @RequestMapping(value = "viewCart", method = RequestMethod.GET)
     public String viewCart(Model model) {
         try {
-            List<Cartitem> cartitemList = cartService.getCart(getPrincipal());
+            List<CartItemItem> cartitemList = cartService.getCart(getPrincipal());
             model.addAttribute("cartitemList", cartitemList);
             return "cart/cart";
         } catch (CartServiceException e) {

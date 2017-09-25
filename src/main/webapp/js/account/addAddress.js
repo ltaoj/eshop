@@ -31,10 +31,3 @@ function addAddress() {
         }
     })
 }
-
-/**
- * 删除订单
- */
-function deleteAddress() {
-
-}

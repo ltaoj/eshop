@@ -1,11 +1,15 @@
 package org.eshop.service.impl;
 
+import org.eshop.domain.CartItemItem;
 import org.eshop.entity.Cartitem;
+import org.eshop.entity.Item;
 import org.eshop.persistence.CartitemDAO;
+import org.eshop.persistence.ItemDAO;
 import org.eshop.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,10 +19,12 @@ import java.util.List;
 public class CartServiceimpl implements CartService{
 
     private CartitemDAO cartitemDAO;
+    private ItemDAO itemDAO;
 
     @Autowired
-    public CartServiceimpl(CartitemDAO cartitemDAO) {
+    public CartServiceimpl(CartitemDAO cartitemDAO, ItemDAO itemDAO) {
         this.cartitemDAO = cartitemDAO;
+        this.itemDAO = itemDAO;
     }
 
     public void addToCart(Cartitem cartitem) {
@@ -56,7 +62,19 @@ public class CartServiceimpl implements CartService{
         }
     }
 
-    public List<Cartitem> getCart(String loginId) {
-        return cartitemDAO.getCartitemList(loginId);
+    public List<CartItemItem> getCart(String loginId) {
+        List<Cartitem> cartitemList = cartitemDAO.getCartitemList(loginId);
+        List<CartItemItem> cartItemItemList = new ArrayList<CartItemItem>();
+        for (int i = 0;i < cartitemList.size();i++) {
+            CartItemItem cartItemItem = new CartItemItem();
+            cartItemItem.setItemId(cartitemList.get(i).getItemId());
+            cartItemItem.setQuantity(cartitemList.get(i).getQuantity());
+            cartItemItem.setUnitprice(cartitemList.get(i).getUnitprice());
+            Item item = itemDAO.getItem(cartitemList.get(i).getItemId());
+            cartItemItem.setName(item.getName());
+            cartItemItem.setDescription(item.getDescription());
+            cartItemItemList.add(cartItemItem);
+        }
+        return cartItemItemList;
     }
 }

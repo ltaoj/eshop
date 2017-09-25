@@ -32,23 +32,23 @@
             </thead>
             <tbody>
             <c:forEach var="cartitem" items="${cartitemList}">
-                <tr>
+                <tr id="${cartitem.itemId}">
                     <td><input name="choose" id="" type="checkbox"></td>
-                    <td><img src="images/preview/pan-6/pink_pan2.png"></td>
-                    <td>德国进口精致不锈钢奶锅</td>
+                    <td><img src="${cartitem.description}"></td>
+                    <td>${cartitem.name}</td>
                     <td>${cartitem.unitprice}</td>
                     <td>
                         <table>
                             <tr>
-                                <td id="demo"><a href="#"><span id="minus"></span></a></td>
+                                <td onclick="minus(this)"><a href="#"><span>-</span></a></td>
                                 <td>
                                     <span id="count">${cartitem.quantity}</span>
                                 </td>
-                                <td id="demo2"><a href="#"><span id="add"></span></a></td>
+                                <td onclick="plus(this)"><a href="#"><span>+</span></a></td>
                             </tr>
                         </table>
                     </td>
-                    <td><a href="#"><span class="layui-badge layui-bg-cyan" id="modify">编辑</span></a></td>
+                    <td><a href="#"><span class="layui-badge layui-bg-cyan modify-index" onclick="modify(this)">编辑</span></a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -78,16 +78,13 @@
         //$(".hide").hide();
     });
 
-    $('#modify').on('click', function(){
-        //点击之后将input输入框变为不可编辑
-        //$('#product_count').attr("disabled",false);
-        //改变span的样式
-        var content=$("#modify").text();
+    function modify(obj) {
+        var content = $(obj).html();
         if(content=="编辑")
         {
-            $("#modify").attr("class", "layui-badge layui-bg-green");
+            $(this).attr("class", "layui-badge layui-bg-green");
             //完成字样
-            $("#modify").text("完成");
+            $(this).text("完成");
 
             $("#demo").show();
             $("#demo2").show();
@@ -96,16 +93,14 @@
         }
         else
         {
-            $("#modify").attr("class", "layui-badge layui-bg-cyan");
+            $(this).attr("class", "layui-badge layui-bg-cyan");
             //完成字样
-            $("#modify").text("编辑");
+            $(this).text("编辑");
 
             $("#demo").hide();
             $("#demo2").hide();
         }
-
-
-    });
+    }
 
     $('#demo').on('click', function(){
 

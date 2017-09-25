@@ -1,5 +1,6 @@
 package org.eshop.service;
 
+import org.eshop.domain.CartItemItem;
 import org.eshop.entity.Cartitem;
 import org.eshop.exception.CartServiceException;
 
@@ -48,5 +49,5 @@ public interface CartService {
      * @param loginId
      * @return
      */
-    List<Cartitem> getCart(String loginId) throws CartServiceException;
+    List<CartItemItem> getCart(String loginId) throws CartServiceException;
 }
