@@ -19,11 +19,15 @@ function addAddress() {
         dataType: "json",
         data: JSON.stringify(json),
         success: function (data) {
-            console.log(data);
-            // 关闭窗口
-            window.close()
-            // 重载父窗口
-            window.parent.location.reload();
+            if (data.result == "success") {
+                layer.msg(data.object);
+                window.parent.location.reload();
+            } else if (data.code == 5){
+                layer.msg(data.message)
+            }
+        },
+        error: function () {
+            layer.msg("服务器错误");
         }
     })
 }

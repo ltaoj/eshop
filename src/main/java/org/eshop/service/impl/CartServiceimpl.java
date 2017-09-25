@@ -22,7 +22,13 @@ public class CartServiceimpl implements CartService{
     }
 
     public void addToCart(Cartitem cartitem) {
-        cartitemDAO.insertCartitem(cartitem);
+        Cartitem cartitem1 = cartitemDAO.getCartitem(cartitem.getItemId(), cartitem.getLoginId());
+        if (cartitem1 != null) {
+            cartitem.setQuantity(cartitem.getQuantity() + cartitem1.getQuantity());
+            cartitemDAO.updateCartitem(cartitem);
+        }else {
+            cartitemDAO.insertCartitem(cartitem);
+        }
     }
 
     public void removeFromCart(String itemId, String loginId) {

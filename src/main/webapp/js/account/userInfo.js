@@ -31,8 +31,14 @@ function deleteAddr(addrId) {
         url: 'delHarvAddr?addrId=' + addrId,
         method: 'GET',
         success: function (data) {
-            console.log(data);
-            window.parent.location.reload();
+            if (data.result == "success") {
+                layer.msg(data.object);
+            } else if (data.code == 1) {
+                layer.msg(data.message);
+            }
+        },
+        error: function () {
+            layer.msg("服务器错误");
         }
     })
 }

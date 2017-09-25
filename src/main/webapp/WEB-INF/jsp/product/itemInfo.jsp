@@ -74,6 +74,7 @@
         var count  = $('#count').val();//获取初始值
         count++;
         $('#count').val(count);
+        $("#count1").html(count);
 
     });
 
@@ -83,7 +84,7 @@
         {
             count--;
             $('#count').val(count);
-
+            $("#count1").html(count);
         }
 
     });

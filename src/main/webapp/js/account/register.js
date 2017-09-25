@@ -16,7 +16,15 @@ function regist() {
         dataType: "json",
         data: JSON.stringify(json),
         success: function (data) {
-            console.log(data);
+            if (data.result == "success") {
+                layer.msg(data.object);
+                window.location.href = "login";
+            } else if (data.code == 1) {
+                layer.msg(data.message);
+            }
+        },
+        error: function () {
+            layer.msg("服务器错误");
         }
     })
 }

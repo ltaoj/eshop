@@ -8,7 +8,14 @@ function sendEmcode() {
         url: 'emcode?email=' + email,
         method: 'GET',
         success: function (data) {
-            console.log(data);
+            if (data.result == "success") {
+                layer.msg(data.object);
+            } else if (data.code == 1) {
+                layer.msg(data.message);
+            }
+        },
+        error: function () {
+            layer.msg("服务器错误");
         }
     })
 }
