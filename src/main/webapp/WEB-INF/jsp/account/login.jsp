@@ -6,33 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>登录</title>
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="plugin/layui/css/layui.css"/>
-    <!--引入js文件-->
-    <script src="js/jquery/jquery-3.2.1.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="plugin/layui/layui.js"></script>
-</head>
-
-<body>
-
-<!--导航栏-->
-<div class="navigation">
-    <table>
-        <tr>
-            <td style="width: 80%"><img src="../images/main/text.png"></td>
-
-            <td style="width: 200px"><img src="../images/main/user.png" id="login"></td>
-
-            <td><img src="../images/main/cart.png"></td>
-        </tr>
-    </table>
-</div>
+<%@ include file="../public/includeTop.jsp" %>
 
 <!--图片轮播-->
 <div class="layui-carousel pic_play" id="pic_play">

@@ -31,11 +31,11 @@
 <div class="navigation">
     <table>
         <tr>
-            <td style="width: 80%"><img src="images/main/text.png"></td>
+            <td style="width: 80%"><a href="<%=request.getContextPath()%>/"><img src="images/main/text.png" /></a></td>
 
-            <td style="width: 200px"><a href="<%=request.getContextPath()%>/myInfo"><img src="images/main/user.png" id="login"></a></td>
+            <td style="width: 200px"><a href="<%=request.getContextPath()%>/myInfo"><img src="images/main/user.png" id="login" /></a></td>
 
-            <td><a href="<%=request.getContextPath()%>/viewCart"><img src="images/main/cart.png"></a></td>
+            <td><a href="<%=request.getContextPath()%>/viewCart"><img src="images/main/cart.png" /></a></td>
         </tr>
     </table>
 </div>

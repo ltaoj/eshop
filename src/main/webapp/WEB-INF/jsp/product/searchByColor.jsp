@@ -29,14 +29,14 @@
     .container
     {
         background-image: url(images/main/longPic.png);
-        width: 200px;
+        width: 12%;
         height: 1000px;
     }
     .color
     {
         position:absolute;
-        right: 100px;
-        top: 50px;
+        right: 6%;
+        top: 8%;
     }
     .product
     {
@@ -46,12 +46,14 @@
     .pic
     {
         position:absolute;
-        left:215px;
+        left:200px;
         top:110px;
     }
-    .icon
+    .search
     {
-
+        position:absolute;
+        left: 20%;
+        top: 8%;
     }
 </style>
 
@@ -66,42 +68,78 @@
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr>
-                <td><img class="icon" src="images/shape/search.png"></td>
+                <td><a href="<%=request.getContextPath()%>/"><img class="icon" src="images/shape/home.png"></a></td>
             </tr>
+
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
-            <tr><td><img class="icon" src="images/shape/color.png"></td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td><a href="<%=request.getContextPath()%>/shapeRes"><img class="icon" src="images/shape/shape.png" /></a></td>
+            </tr>
+
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
-            <tr><td><img class="icon" src="images/shape/cart.png"></td></tr>
+            <tr><td><a href="<%=request.getContextPath()%>/colorRes"><img class="icon" src="images/shape/color.png" /></a></td></tr>
+
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
-            <tr><td><img class="icon" src="images/shape/order.png"></td></tr>
+            <tr><td><a href="<%=request.getContextPath()%>/viewCart"><img class="icon" src="images/shape/cart.png" /></a></td></tr>
+
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
             <tr><td>&nbsp;</td></tr>
-            <tr><td><img class="icon" src="images/shape/service.png"></td></tr>
+            <tr><td><a href="<%=request.getContextPath()%>/orderList"><img class="icon" src="images/shape/bill.png"></a>></td></tr>
+
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td><a href="###"><img class="icon" src="images/shape/service.png" /></a></td></tr>
+
         </table>
     </div>
 </div>
 
-<div class="color">
+
+<!--商品搜索框-->
+<div class="search">
     <table>
         <tr>
-            <td><p>颜色分类</p></td>
-            <td>&nbsp;&nbsp;&nbsp;</td>
-            <td><img src="images/shape/color.png"></td>
+            <td> <input type="text" id="search" name="keyword" placeholder="请输入商品名称" autocomplete="off" class="layui-input" style="width: 200px"></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><button class="layui-btn layui-btn-radius"><img onclick="searchByName()" src="images/shape/zoom.png" style="width: 24px;height: 24px"></button></td>
         </tr>
     </table>
 </div>
 
+<!--按颜色分类-->
+<div class="color">
+    <table>
+        <tr>
+            <td><img id="红色" onclick="searchByColor(this)" src="images/color/red.png" style="width: 40px;height: 40px"></td>
+            <td>&nbsp;</td>
+            <td><img id="粉色" onclick="searchByColor(this)" src="images/color/pink.png" style="width: 40px;height: 40px"></td>
+            <td>&nbsp;</td>
+            <td><img id="粉红色" onclick="searchByColor(this)" src="images/color/rose.png" style="width: 40px;height: 40px"></td>
+            <td>&nbsp;</td>
+            <td><img id="黄色" onclick="searchByColor(this)" src="images/color/yellow.png" style="width: 40px;height: 40px"></td>
+            <td>&nbsp;</td>
+            <td><img id="绿色" onclick="searchByColor(this)" src="images/color/green.png" style="width: 40px;height: 40px"></td>
+            <td>&nbsp;</td>
+            <td><img id="黑色" onclick="searchByColor(this)" src="images/color/black.png" style="width: 40px;height: 40px"></td>
+        </tr>
+    </table>
+</div>
+
+<!--商品展示区-->
 <div class="pic">
     <table>
         <tr>
@@ -135,7 +173,7 @@
             maxmin: false,//最大最小化
             shadeClose: true, //点击遮罩关闭层
             area : ['800px' , '520px'],//区域大小面积
-            content: 'itemDetail'//打开之后呈现的html内容
+            content: 'itemForm.html'//打开之后呈现的html内容
         });
     });
 </script>

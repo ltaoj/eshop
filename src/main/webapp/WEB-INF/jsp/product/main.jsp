@@ -12,7 +12,7 @@
 <div >
 
     <div class="search">
-        <img src="images/main/logo.png">
+        <a href="<%=request.getContextPath()%>/shapeRes"><img src="images/main/logo.png"></a>
     </div>
     <br><br><br>
     <div class="search1">
