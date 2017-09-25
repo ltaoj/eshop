@@ -19,11 +19,7 @@ function addToCart(itemId, unitprice) {
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            if (textStatus == "302"){
-                window.parent.location.href = "login";
-            } else {
-                layer.msg("服务器错误");
-            }
+            window.parent.location.href = "login";
         }
     })
 }

@@ -4,7 +4,7 @@
 
 function searchByName() {
     var keyword = $("#search").val();
-    var type = "color";
+    var type = "name";
     var byPage = "true";
     var page = 1;
     var count = 15;
@@ -14,19 +14,22 @@ function searchByName() {
         url: "search",
         method: "GET",
         dateType: "json",
-        data: JSON.stringify(json),
+        data: json,
         success: function (data) {
             if(data.result =="success"){
-               window.location.href="colorRes";
                 $("#pic").empty();
-
                 var text = "";
-                for (var i=0;i<data.object.length;i++){
+                if (data.object.length == 0) {
+                    $("#search-msg").html("没有搜索到与<em>" + keyword + "</em>相关的商品");
+                } else {
+                    $("#search-msg").html("共搜索到与<em>" + keyword + "</em>相关的" + data.object.length + "条记录");
+                    for (var i=0;i<data.object.length;i++){
 
-                    text+='<img src= ' + data.object[i].description +' id='+data.object[i].itemId+' class="product" '+'onclick="itemDetail('+data.object[i].itemId+')">'
+                        text+='<img src= ' + data.object[i].description +' id='+data.object[i].itemId+' class="product" '+'onclick="itemDetail('+data.object[i].itemId+')">'
 
+                    }
+                    $("#pic").html(text);
                 }
-                $("#pic").html(text);
 
             }else if (data.code == 13) {
                 // 出错的处理

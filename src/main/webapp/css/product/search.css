@@ -71,6 +71,12 @@
     display: inline-block;
 }
 
+.search-msg {
+    color: #888;
+    font-size: 12pt;
+    text-align: center;
+}
+
 .pic {
     margin-top: 50px;
     margin-bottom: 50px;

@@ -64,7 +64,7 @@
                 </table>
             </div>
         </div>
-
+        <div id="search-msg" class="search-msg"></div>
         <!--商品展示区-->
         <div id="pic" class="pic">
         </div>

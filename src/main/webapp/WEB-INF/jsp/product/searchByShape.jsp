@@ -59,7 +59,7 @@
                 </table>
             </div>
         </div>
-
+        <div id="search-msg" class="search-msg"></div>
         <!--商品展示-->
         <div id="pic" class="pic">
         </div>
