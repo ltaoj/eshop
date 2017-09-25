@@ -7,6 +7,147 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../public/adminIncludeTop.jsp" %>
+<%--添加商品modal--%>
+<div class="modal fade" id="iModal" tabindex="-1" role="dialog" aria-labelledby="iModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="iModalLabel">
+                    新商品
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="itemId">商品ID</label>
+                        <input type="text" id="itemId" class= "form-control" placeholder="请输入商品ID" />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">商品名称</label>
+                        <input type="text" id="name" class= "form-control" placeholder="请输入商品名称" />
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId">所属品类</label>
+                        <select id="categoryId">
+                            <option value="">品类名1</option>
+                            <option value="">品类名2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="listprice">商品售价</label>
+                        <div class="input-group">
+                            <input id="listprice" type="text" class="form-control" placeholder="请输入商品售价">
+                            <span class="input-group-addon">.0</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unitcost">商品进价</label>
+                        <div class="input-group">
+                            <input id="unitcost" type="text" class="form-control" placeholder="请输入商品进价">
+                            <span class="input-group-addon">.0</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="attr1">颜色属性</label>
+                        <select id="attr1">
+                            <option>红色</option>
+                            <option>蓝色</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="attr2">形状属性</label>
+                        <select id="attr2">
+                            <option>品类名1</option>
+                            <option>品类名2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">商品描述</label>
+                        <a href="###" class="thumbnail">
+                            <img src=""
+                                 alt="商品图片描述">
+                        </a>
+                        <input type="file" id="description">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    确认添加
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<%--修改定价modal--%>
+<div class="modal fade" id="priceModal" tabindex="-1" role="dialog" aria-labelledby="priceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="priceModalLabel">
+                    修改定价
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="clistprice">商品定价</label>
+                        <div class="input-group">
+                            <input id="clistprice" type="text" class="form-control" placeholder="请输入商品定价">
+                            <span class="input-group-addon">.0</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    确认修改
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<%--修改库存--%>
+<div class="modal fade" id="invenModal" tabindex="-1" role="dialog" aria-labelledby="invenModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="invenModalLabel">
+                    修改库存
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="inveQuan">库存数量</label>
+                        <input id="inveQuan" type="text" class="form-control" placeholder="请输入商品库存">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    确认修改
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="mainbody">
     <div class="sidenav">
         <ul>
@@ -35,7 +176,7 @@
             <div class="content-item">
                 <h4>商品列表</h4>
                 <div class="ci-header-extra">
-                    <a class="btn btn-success" href="###">添加商品</a>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#iModal">添加商品</a>
                 </div>
                 <!--主体部分-->
                 <div class="ci-body">
@@ -57,17 +198,14 @@
                             <td><span>1000.0</span></td>
                             <td><span>1100.0</span></td>
                             <td><span>50</span></td>
-                            <td>
-                                <span class="">未付款</span>
-                            </td>
                             <td><span>
-                                        <a class="btn btn-info">修改定价</a>
+                                        <a class="btn btn-info" data-toggle="modal" data-target="#priceModal">修改定价</a>
                                         </span>
                                 <span>
-                                        <a class="btn btn-success">修改库存</a>
+                                        <a class="btn btn-success" data-toggle="modal" data-target="#invenModal">修改库存</a>
                                         </span>
                                 <span>
-                                        <a class="btn btn-success">删除</a>
+                                        <a class="btn btn-danger">删除</a>
                                         </span>
                             </td>
                         </tr>

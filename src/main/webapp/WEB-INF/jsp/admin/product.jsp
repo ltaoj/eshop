@@ -7,6 +7,45 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../public/adminIncludeTop.jsp" %>
+<%--添加品类模态框--%>
+<div class="modal fade" id="pModal" tabindex="-1" role="dialog" aria-labelledby="pModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="pModalLabel">
+                    新品类
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="name">品类名称</label>
+                        <input type="text" id="name" class= "form-control" placeholder="请输入品类名称" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">品类描述</label>
+                        <input type="text" id="description" class="form-control" placeholder="请输入品类描述">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId">品类ID</label>
+                        <input type="text" id="categoryId" class="form-control" placeholder="请输入品类ID">
+                        <button class="btn btn-success">随机生成</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    确认添加
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="mainbody">
     <div class="sidenav">
@@ -37,7 +76,7 @@
             <div class="content-item">
                 <h4>品类列表</h4>
                 <div class="ci-header-extra">
-                    <a class="btn btn-success" href="###">添加品类</a>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#pModal">添加品类</a>
                 </div>
                 <!--主体部分-->
                 <div class="ci-body">
