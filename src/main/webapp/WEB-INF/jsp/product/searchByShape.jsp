@@ -62,37 +62,6 @@
 
         <!--商品展示-->
         <div id="pic" class="pic">
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-              <%--<table>--%>
-                <%--<tr>--%>
-                <%--<td><img class="product_shape" src="images/preview/cup-5/black_cup1.png"></td>--%>
-                <%--<td><img class="product_shape" src="images/preview/cup-5/black_cup2.png"></td>--%>
-                <%--<td><img class="product_shape" src="images/preview/cup-5/yellow_cup1.png"></td>--%>
-                <%--<td><img class="product_shape" src="images/preview/cup-5/blue_cup.png"></td>--%>
-                <%--<td></td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                <%--<td></td>--%>
-                <%--<td></td>--%>
-                <%--<td></td>--%>
-                <%--<td></td>--%>
-            <%--<td></td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<td></td>--%>
-                    <%--<td></td>--%>
-                    <%--<td></td>--%>
-                    <%--<td></td>--%>
-                    <%--<td></td>--%>
-                <%--</tr>--%>
-            <%--</table>--%>
         </div>
     </div>
 </div>

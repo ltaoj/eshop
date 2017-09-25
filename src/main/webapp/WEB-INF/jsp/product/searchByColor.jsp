@@ -67,28 +67,8 @@
 
         <!--商品展示区-->
         <div id="pic" class="pic">
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
-            <img src="images/preview/cup-5/black_cup1.png" id="" class="product" onclick="itemDetail(1)"/>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $('#black_cup1').on('click', function(){
-        layer.open({
-            type: 2, //弹出层的类型
-            title: '',//弹出框的标题
-            maxmin: false,//最大最小化
-            shadeClose: true, //点击遮罩关闭层
-            area : ['800px' , '520px'],//区域大小面积
-            content: 'itemForm.html'//打开之后呈现的html内容
-        });
-    });
-</script>
 </body>
 </html>

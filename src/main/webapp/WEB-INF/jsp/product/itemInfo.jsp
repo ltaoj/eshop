@@ -14,6 +14,7 @@
 <script src="js/jquery/jquery-3.2.1.min.js"></script>
 <script src="js/layer/layer.js"></script>
 <script src="plugin/layui/layui.js"></script>
+<script src="js/product/itemInfo.js"></script>
 
 <style type="text/css">
     .text
@@ -55,7 +56,7 @@
 
         <tr>
             <td></td>
-            <td><button class="layui-btn layui-btn-big">加入购物车</button></td>
+            <td><button class="layui-btn layui-btn-big" onclick="addToCart(${item.itemId}, ${item.listprice})">加入购物车</button></td>
         </tr>
     </table>
 
