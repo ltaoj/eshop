@@ -2,6 +2,9 @@ package org.eshop.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
+
 /**
  * Created by ltaoj on 2017/9/12.
  */
@@ -16,5 +19,10 @@ public class EshopWebAppInitializer extends AbstractAnnotationConfigDispatcherSe
 
     protected String[] getServletMappings() {
         return new String[]{"/"};
+    }
+
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(new MultipartConfigElement("D:\\uploads"));
     }
 }

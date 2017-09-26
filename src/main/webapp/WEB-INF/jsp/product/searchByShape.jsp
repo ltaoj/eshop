@@ -54,7 +54,7 @@
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td><a href="###"><img id="矩形" onclick="searchByShape(this)" src="images/shape/rectangle.png" style="width: 40px;height: 40px"></a></td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td><a href="###"><img id="线性" onclick="searchByShape(this)" src="images/shape/stripe.png" style="width: 40px;height: 40px"></a></td>
+                        <td><a href="###"><img id="线形" onclick="searchByShape(this)" src="images/shape/stripe.png" style="width: 40px;height: 40px"></a></td>
                     </tr>
                 </table>
             </div>

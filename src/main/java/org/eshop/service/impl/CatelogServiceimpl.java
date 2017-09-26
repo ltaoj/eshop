@@ -2,6 +2,7 @@ package org.eshop.service.impl;
 
 import org.eshop.domain.Constant;
 import org.eshop.entity.Item;
+import org.eshop.exception.TransationException;
 import org.eshop.persistence.CategoryDAO;
 import org.eshop.persistence.ItemDAO;
 import org.eshop.service.CatelogService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PersistenceException;
 import java.util.List;
 
 /**
@@ -48,5 +50,13 @@ public class CatelogServiceimpl implements CatelogService {
             itemList = itemDAO.getItemListByKeywordPaging(keyword, (page == 0 ? 0 : (page - 1) * count), count);
         }
         return itemList;
+    }
+
+    public void addItem(Item item) throws TransationException {
+        try {
+            itemDAO.insertItem(item);
+        } catch (RuntimeException e) {
+            throw new TransationException(item);
+        }
     }
 }

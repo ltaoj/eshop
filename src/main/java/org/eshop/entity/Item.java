@@ -1,15 +1,13 @@
 package org.eshop.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * Created by ltaoj on 2017/9/21.
  */
 @Entity
+@Table(name = "item", schema = "eshop", catalog = "")
 public class Item {
     private String itemId;
     private String name;

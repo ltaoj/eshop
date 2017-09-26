@@ -2,6 +2,8 @@ package org.eshop.service;
 
 import org.eshop.entity.Item;
 import org.eshop.exception.CatelogServiceException;
+import org.eshop.exception.HandleFileUploadException;
+import org.eshop.exception.TransationException;
 
 import java.util.List;
 
@@ -33,4 +35,6 @@ public interface CatelogService {
      */
     List<Item> searchByKeywordAndTypePaging(String keyword, String type, int page, int count) throws CatelogServiceException;
     /**********************************管理员方法**********************************/
+
+    void addItem(Item item) throws TransationException;
 }

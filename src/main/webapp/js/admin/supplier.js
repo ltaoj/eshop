@@ -21,7 +21,7 @@ function addSupplier() {
             $("#alert").html("");
             $("#supplierModal").modal("hide");
             if (data.result == "success") {
-                $("#alert").html(alert("success", data.object));
+                window.parent.location.reload();
             } else if (data.code == 1) {
                 $("#alert").html(alert("danger", data.message));
             }

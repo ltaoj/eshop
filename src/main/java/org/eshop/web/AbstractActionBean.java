@@ -2,7 +2,12 @@ package org.eshop.web;
 
 import org.eshop.domain.Error;
 import org.eshop.domain.ErrorCode;
+import org.eshop.domain.Result;
+import org.eshop.exception.HandleFileUploadException;
+import org.eshop.exception.HandleTransationException;
 import org.eshop.exception.WrapperServiceException;
+import org.eshop.util.ConfigUtil;
+import org.eshop.util.IOUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -57,6 +62,22 @@ public abstract class AbstractActionBean {
                 break;
         }
         return error;
+    }
+
+    @ExceptionHandler(HandleFileUploadException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    Result fileUploadError(HandleFileUploadException e) {
+        return new Result(Result.RESULT_ERROR, e);
+    }
+
+    @ExceptionHandler(HandleTransationException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Result transationError(HandleTransationException e) {
+        String path = ConfigUtil.getPath();
+        path = path.substring(0, path.lastIndexOf(System.getProperty("file.separator")));
+        IOUtil.removeFile(path, e.getTransationException().getWithdrawInst().getDescription());
+        return new Result(Result.RESULT_ERROR, e);
     }
 
     public String getPrincipal(){

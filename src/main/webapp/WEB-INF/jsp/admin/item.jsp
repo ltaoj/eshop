@@ -32,8 +32,7 @@
                     <div class="form-group">
                         <label for="categoryId">所属品类</label>
                         <select id="categoryId">
-                            <option value="">品类名1</option>
-                            <option value="">品类名2</option>
+                            <option>222</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -54,30 +53,35 @@
                         <label for="attr1">颜色属性</label>
                         <select id="attr1">
                             <option>红色</option>
-                            <option>蓝色</option>
+                            <option>粉红色</option>
+                            <option>粉色</option>
+                            <option>黄色</option>
+                            <option>绿色</option>
+                            <option>黑色</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="attr2">形状属性</label>
                         <select id="attr2">
-                            <option>品类名1</option>
-                            <option>品类名2</option>
+                            <option>圆形</option>
+                            <option>矩形</option>
+                            <option>线形</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="description">商品描述</label>
+                        <label for="itemPic">商品描述</label>
                         <a href="###" class="thumbnail">
                             <img src=""
                                  alt="商品图片描述">
                         </a>
-                        <input type="file" id="description">
+                        <input type="file" name="itemPic" id="itemPic" accept="image/jpeg,image/png,image/gif" >
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" onclick="addItem()">
                     确认添加
                 </button>
             </div>
@@ -221,5 +225,7 @@
     </div>
 </div>
 
+<script src="js/admin/item.js"></script>
+<script src="js/uploads/ajaxfileupload.js"></script>
 </body>
 </html>
