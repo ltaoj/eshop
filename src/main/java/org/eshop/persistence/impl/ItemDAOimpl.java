@@ -131,4 +131,19 @@ public class ItemDAOimpl extends AbstractDAO implements ItemDAO {
             session.close();
         }
     }
+
+    public List<Item> getAllItem() {
+        Session session = HibernateUtil.getSession();
+        Transaction  transaction = getTransation(session);
+        try {
+            List<Item> list = session.createQuery("from Item").list();
+            transaction.commit();
+            return list;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
 }

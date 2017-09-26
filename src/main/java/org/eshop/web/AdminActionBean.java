@@ -1,7 +1,9 @@
 package org.eshop.web;
 
+import org.eshop.domain.BigItem;
 import org.eshop.domain.ErrorCode;
 import org.eshop.domain.Result;
+import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
 import org.eshop.entity.Supplier;
 import org.eshop.exception.*;
@@ -23,6 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ltaoj on 2017/9/25.
@@ -47,8 +52,22 @@ public class AdminActionBean extends AbstractActionBean{
     }
 
     @RequestMapping(value = "itemMg", method = RequestMethod.GET)
-    public String showItem() {
-        return "admin/item";
+    public String showItem(Model model) {
+        try {
+            List<Item> itemList = catelogService.getItemList();
+            List<BigItem> bigItemList = new ArrayList<BigItem>();
+            for (int i = 0;i < itemList.size();i++) {
+                BigItem bigItem = new BigItem();
+                bigItem.setItem(itemList.get(i));
+                Inventory inventory = catelogService.getInventory(itemList.get(i).getItemId());
+                bigItem.setInventory(inventory);
+                bigItemList.add(bigItem);
+            }
+            model.addAttribute("bigItemList", bigItemList);
+            return "admin/item";
+        } catch (CatelogServiceException e) {
+            throw new WrapperServiceException(ErrorCode.SEARCH_ITEM_ERROR);
+        }
     }
 
     @RequestMapping(value = "orderMg", method = RequestMethod.GET)
@@ -79,7 +98,6 @@ public class AdminActionBean extends AbstractActionBean{
     @RequestMapping(value = "addItem", method = RequestMethod.POST)
     public ResponseEntity<Result> addItem(@RequestPart("itemPic") MultipartFile itemPic,
                                           Item item, HttpServletRequest request) throws HandleFileUploadException {
-        System.out.println("****");
         String path = request.getSession().getServletContext().getRealPath("upImg");
         ConfigUtil.setPath(path);
         try {
@@ -96,4 +114,6 @@ public class AdminActionBean extends AbstractActionBean{
             throw new HandleTransationException(e);
         }
     }
+
+
 }

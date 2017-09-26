@@ -120,7 +120,7 @@
                 </div>
                 <!-- 底部信息没有数据时显示 -->
                 <div class="ci-footer">
-                    <span <c:if test="${supplierList.size() == 0}">hidden="true"</c:if>尚未添加任何商品</span>
+                    <span <c:if test="${supplierList.size() == 0}">hidden="true"</c:if>>尚未添加任何商品</span>
                 </div>
             </div>
         </div>

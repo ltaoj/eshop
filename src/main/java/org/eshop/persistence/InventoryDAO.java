@@ -23,5 +23,12 @@ public interface InventoryDAO {
      * @return
      * @throws PersistenceException
      */
-    List<Inventory> getInventory(String itemId) throws PersistenceException;
+    Inventory getInventory(String itemId) throws PersistenceException;
+
+    /**
+     * 初始化添加库存
+     * @param inventory
+     * @throws PersistenceException
+     */
+    void insertInventory(Inventory inventory) throws PersistenceException;
 }

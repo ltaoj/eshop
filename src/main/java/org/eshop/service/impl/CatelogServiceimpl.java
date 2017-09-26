@@ -1,16 +1,17 @@
 package org.eshop.service.impl;
 
 import org.eshop.domain.Constant;
+import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
+import org.eshop.exception.CatelogServiceException;
 import org.eshop.exception.TransationException;
 import org.eshop.persistence.CategoryDAO;
+import org.eshop.persistence.InventoryDAO;
 import org.eshop.persistence.ItemDAO;
 import org.eshop.service.CatelogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.PersistenceException;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class CatelogServiceimpl implements CatelogService {
 
     private CategoryDAO categoryDAO;
     private ItemDAO itemDAO;
+    private InventoryDAO inventoryDAO;
 
     @Autowired
     public CatelogServiceimpl(CategoryDAO categoryDAO, ItemDAO itemDAO) {
@@ -55,8 +57,20 @@ public class CatelogServiceimpl implements CatelogService {
     public void addItem(Item item) throws TransationException {
         try {
             itemDAO.insertItem(item);
+            Inventory inventory = new Inventory();
+            inventory.setItemId(item.getItemId());
+            inventory.setInveQuan(0);
+            inventoryDAO.insertInventory(inventory);
         } catch (RuntimeException e) {
             throw new TransationException(item);
         }
+    }
+
+    public List<Item> getItemList() throws CatelogServiceException {
+        return itemDAO.getAllItem();
+    }
+
+    public Inventory getInventory(String itemId) throws CatelogServiceException {
+        return inventoryDAO.getInventory(itemId);
     }
 }

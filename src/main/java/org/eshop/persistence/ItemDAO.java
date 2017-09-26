@@ -65,4 +65,10 @@ public interface ItemDAO {
      * @return
      */
     List<Item> getItemListByAttrPaging(String keyword, String type, int offset, int count);
+
+    /**
+     * 获取所有商品
+     * @return
+     */
+    List<Item> getAllItem();
 }

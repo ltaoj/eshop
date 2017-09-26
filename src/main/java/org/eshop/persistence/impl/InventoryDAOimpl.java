@@ -32,14 +32,27 @@ public class InventoryDAOimpl extends AbstractDAO implements InventoryDAO {
         }
     }
 
-    public List<Inventory> getInventory(String itemId) throws PersistenceException {
+    public Inventory getInventory(String itemId) throws PersistenceException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = getTransation(session);
         try {
             String hql = "from Inventory as i where i.itemId='" + itemId + "'";
             List<Inventory> list = session.createQuery(hql).list();
             transaction.commit();
-            return list;
+            return list.size() > 0 ? list.get(0) : null;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void insertInventory(Inventory inventory) throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            session.save(inventory);
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);

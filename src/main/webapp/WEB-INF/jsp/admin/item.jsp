@@ -196,29 +196,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><span>HBCTXD</span></td>
-                            <td><span>红沙发</span></td>
-                            <td><span>1000.0</span></td>
-                            <td><span>1100.0</span></td>
-                            <td><span>50</span></td>
-                            <td><span>
+                        <c:forEach var="bigItem" items="${bigItemList}">
+                            <tr>
+                                <td><span>${bigItem.item.itemId}</span></td>
+                                <td><span>${bigItem.item.name}</span></td>
+                                <td><span>${bigItem.item.unitcost}</span></td>
+                                <td><span>${bigItem.item.listprice}</span></td>
+                                <td><span>${bigItem.inventory.inveQuan}</span></td>
+                                <td><span>
                                         <a class="btn btn-info" data-toggle="modal" data-target="#priceModal">修改定价</a>
                                         </span>
-                                <span>
+                                    <span>
                                         <a class="btn btn-success" data-toggle="modal" data-target="#invenModal">修改库存</a>
                                         </span>
-                                <span>
+                                    <span>
                                         <a class="btn btn-danger">删除</a>
                                         </span>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
                 <!-- 底部信息没有数据时显示 -->
                 <div class="ci-footer">
-                    <span>尚未添加任何商品</span>
+                    <span <c:if test="${bigItemList.size() > 0}">hidden="true"</c:if>>尚未添加任何商品</span>
                 </div>
             </div>
         </div>
@@ -226,6 +228,7 @@
 </div>
 
 <script src="js/admin/item.js"></script>
+<script src="js/widge/alert.js"></script>
 <script src="js/uploads/ajaxfileupload.js"></script>
 </body>
 </html>

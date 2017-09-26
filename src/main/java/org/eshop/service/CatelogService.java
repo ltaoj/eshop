@@ -1,5 +1,6 @@
 package org.eshop.service;
 
+import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
 import org.eshop.exception.CatelogServiceException;
 import org.eshop.exception.HandleFileUploadException;
@@ -36,5 +37,24 @@ public interface CatelogService {
     List<Item> searchByKeywordAndTypePaging(String keyword, String type, int page, int count) throws CatelogServiceException;
     /**********************************管理员方法**********************************/
 
+    /**
+     * 添加商品
+     * @param item
+     * @throws TransationException
+     */
     void addItem(Item item) throws TransationException;
+
+    /**
+     * 获取商品列表
+     * @return
+     * @throws CatelogServiceException
+     */
+    List<Item> getItemList() throws CatelogServiceException;
+
+    /**
+     * 获取商品库存
+     * @return
+     * @throws CatelogServiceException
+     */
+    Inventory getInventory(String itemId) throws CatelogServiceException;
 }
