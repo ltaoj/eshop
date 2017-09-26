@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * Created by ltaoj on 2017/9/18.
@@ -50,6 +51,20 @@ public class SupplierDAOimpl extends AbstractDAO implements SupplierDAO {
             Supplier supplier = session.get(Supplier.class, supplierId);
             transaction.commit();
             return supplier;
+        } catch (RuntimeException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Supplier> getSupplierList() throws PersistenceException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = getTransation(session);
+        try {
+            List<Supplier> list = session.createQuery("from Supplier ").list();
+            return list;
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);

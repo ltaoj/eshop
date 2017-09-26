@@ -52,6 +52,13 @@ public interface AccountService {
     void registSupplier(Supplier supplier) throws AccountServiceException;
 
     /**
+     * 供货商列表
+     * @return
+     * @throws AccountServiceException
+     */
+    List<Supplier> getSupplierList() throws AccountServiceException;
+
+    /**
      * 获取用户基本信息
      * @param loginId
      * @return

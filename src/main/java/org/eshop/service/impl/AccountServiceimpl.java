@@ -63,7 +63,11 @@ public class AccountServiceimpl implements AccountService {
     }
 
     public void registSupplier(Supplier supplier) throws AccountServiceException {
+        supplierDAO.insertSupplier(supplier);
+    }
 
+    public List<Supplier> getSupplierList() throws AccountServiceException {
+        return supplierDAO.getSupplierList();
     }
 
     public Userinfo getUser(String loginId) throws AccountServiceException {

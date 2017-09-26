@@ -3,6 +3,7 @@ package org.eshop.persistence;
 import org.eshop.entity.Supplier;
 
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * Created by ltaoj on 2017/9/18.
@@ -29,4 +30,11 @@ public interface SupplierDAO {
      * @throws PersistenceException
      */
     Supplier getSupplier(String supplierId) throws PersistenceException;
+
+    /**
+     * 获取所有供货商信息
+     * @return
+     * @throws PersistenceException
+     */
+    List<Supplier> getSupplierList() throws PersistenceException;
 }

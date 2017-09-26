@@ -20,9 +20,45 @@
             <div class="modal-body">
                 <form role="form" class="form-inline">
                     <div class="form-group">
-                        <label for="listprice">库存数量</label>
+                        <label for="supplierId">供货商ID</label>
                         <div class="input-group">
-                            <input id="listprice" type="text" class="form-control" placeholder="请输入商品库存">
+                            <input id="supplierId" type="text" class="form-control" placeholder="请输入供货商ID">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <div class="input-group">
+                            <input id="name" type="text" class="form-control" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">手机号</label>
+                        <div class="input-group">
+                            <input id="phone" type="text" class="form-control" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">性别</label>
+                        <div class="input-group">
+                            <input id="sex" type="text" class="form-control" placeholder="请输入城市">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <div class="input-group">
+                            <input id="email" type="text" class="form-control" placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="province">省份</label>
+                        <div class="input-group">
+                            <input id="province" type="text" class="form-control" placeholder="请输入省份">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">城市</label>
+                        <div class="input-group">
+                            <input id="city" type="text" class="form-control" placeholder="请输入城市">
                         </div>
                     </div>
                 </form>
@@ -31,7 +67,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
                 <button type="button" class="btn btn-primary">
-                    确认修改
+                    确认添加
                 </button>
             </div>
         </div>

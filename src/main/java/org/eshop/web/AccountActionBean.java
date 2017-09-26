@@ -6,6 +6,7 @@ import org.eshop.domain.Register;
 import org.eshop.domain.Result;
 import org.eshop.entity.Harvestaddr;
 import org.eshop.entity.Signon;
+import org.eshop.entity.Supplier;
 import org.eshop.entity.Userinfo;
 import org.eshop.exception.AccountServiceException;
 import org.eshop.exception.VerifycodeServiceException;
