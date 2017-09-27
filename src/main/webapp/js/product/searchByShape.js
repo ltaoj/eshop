@@ -23,7 +23,7 @@ function searchByShape(obj){
                 $("#pic").empty();
                 var text = "";
                 for (var i=0;i<data.object.length;i++){
-                    text+='<img alt="商品图片" src="' + data.object[i].description +'" id="'+data.object[i].itemId+'" class="product" '+'onclick="itemDetail('+data.object[i].itemId+')">'
+                    text+='<img alt="商品图片" src="' + data.object[i].description +'" id="'+data.object[i].itemId+'" class="product" '+'onclick="itemDetail(\''+data.object[i].itemId+'\')">'
                 }
                 $("#pic").append(text);
 
