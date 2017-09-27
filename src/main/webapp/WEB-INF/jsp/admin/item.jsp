@@ -32,7 +32,8 @@
                     <div class="form-group">
                         <label for="categoryId">所属品类</label>
                         <select id="categoryId">
-                            <option>222</option>
+                            <option>1</option>
+                            <option>JJ</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -56,7 +56,7 @@
 
         <tr>
             <td></td>
-            <td><button class="layui-btn layui-btn-big" onclick="addToCart(${item.itemId}, ${item.listprice})">加入购物车</button></td>
+            <td><button class="layui-btn layui-btn-big" onclick="addToCart('${item.itemId}', ${item.listprice})">加入购物车</button></td>
         </tr>
     </table>
 

@@ -53,6 +53,7 @@ public class InventoryDAOimpl extends AbstractDAO implements InventoryDAO {
         Transaction transaction = getTransation(session);
         try {
             session.save(inventory);
+            transaction.commit();
         } catch (RuntimeException e) {
             transaction.rollback();
             throw new PersistenceException(e);

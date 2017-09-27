@@ -24,9 +24,8 @@ function searchByColor(obj){
 
                 var text = "";
                 for (var i=0;i<data.object.length;i++){
-
-                    text+='<img src= ' + data.object[i].description +' id='+data.object[i].itemId+' class="product" '+'onclick="itemDetail('+data.object[i].itemId+')">'
-
+                    text+='<img src= ' + data.object[i].description +' id='+data.object[i].itemId+' class="product" onclick="itemDetail(\''+data.object[i].itemId+'\')">'
+                    console.log(text);
                 }
                 $("#pic").html(text);
 

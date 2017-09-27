@@ -136,4 +136,9 @@ public class AdminActionBean extends AbstractActionBean{
             throw new WrapperServiceException(ErrorCode.DELETE_CATEGORY_FAILED);
         }
     }
+
+    @RequestMapping(value = "adminLogin", method = RequestMethod.GET)
+    public String adminLogin() {
+        return "redirect:/catelogMg";
+    }
 }

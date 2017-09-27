@@ -26,9 +26,10 @@ public class CatelogServiceimpl implements CatelogService {
     private InventoryDAO inventoryDAO;
 
     @Autowired
-    public CatelogServiceimpl(CategoryDAO categoryDAO, ItemDAO itemDAO) {
+    public CatelogServiceimpl(CategoryDAO categoryDAO, ItemDAO itemDAO, InventoryDAO inventoryDAO) {
         this.categoryDAO = categoryDAO;
         this.itemDAO = itemDAO;
+        this.inventoryDAO = inventoryDAO;
     }
 
     public Item getItem(String itemId) {
@@ -60,7 +61,7 @@ public class CatelogServiceimpl implements CatelogService {
             itemDAO.insertItem(item);
             Inventory inventory = new Inventory();
             inventory.setItemId(item.getItemId());
-            inventory.setInveQuan(0);
+            inventory.setInveQuan(50);
             inventoryDAO.insertInventory(inventory);
         } catch (RuntimeException e) {
             throw new TransationException(item);
