@@ -1,6 +1,7 @@
 package org.eshop.service.impl;
 
 import org.eshop.domain.Constant;
+import org.eshop.entity.Category;
 import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
 import org.eshop.exception.CatelogServiceException;
@@ -72,5 +73,17 @@ public class CatelogServiceimpl implements CatelogService {
 
     public Inventory getInventory(String itemId) throws CatelogServiceException {
         return inventoryDAO.getInventory(itemId);
+    }
+
+    public List<Category> getCategoryList() throws CatelogServiceException {
+        return categoryDAO.getAllCategory();
+    }
+
+    public void addCategory(Category category) throws CatelogServiceException {
+        categoryDAO.insertCategory(category);
+    }
+
+    public void deleteCategory(Category category) throws CatelogServiceException {
+        categoryDAO.deleteCategory(category.getCategoryId());
     }
 }

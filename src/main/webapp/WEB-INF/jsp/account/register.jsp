@@ -21,22 +21,8 @@
     <script src="plugin/layui/layui.js"></script>
 </head>
 <body>
-<div>
-    <table>
-        <tr>
-            <td>
-                <img src="images/main/logo.png" class="logoPic">
-            </td>
-            <td>
-                <img src="images/main/title1.png">
-            </td>
-            <td>
-                <p><span class="loginTip"><a href="<%=request.getContextPath()%>/login">已有账号，立即登录</a></span></p>
-            </td>
-        </tr>
-    </table>
-
-</div>
+<%@ include file="../public/includeTop.jsp" %>
+<span class="loginTip"><a href="<%=request.getContextPath()%>/login">已有账号，立即登录</a></span>
 <br>
 <br>
 
@@ -47,27 +33,27 @@
         <form>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">用户名:</label>
+                <label class="layui-form-label"><span class="tag">*</span>用户名:</label>
                 <div class="layui-input-block">
-                    <input type="text" id="user_id"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    <input type="text" id="user_id"  placeholder="请输入用户名" autocomplete="off" class="layui-input" onblur="username()">
                 </div>
             </div>
 
             <br>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">密码:</label>
+                <label class="layui-form-label"><span class="tag">*</span>密码:</label>
                 <div class="layui-input-block">
-                    <input type="password" id="password"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" id="password"  placeholder="请输入密码" autocomplete="off" class="layui-input" >
                 </div>
             </div>
 
             <br>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">确认密码:</label>
+                <label class="layui-form-label"><span class="tag">*</span>确认密码:</label>
                 <div class="layui-input-block">
-                    <input type="password" id="repeatPassword"  placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" id="repeatPassword"  placeholder="请再次输入密码" autocomplete="off" class="layui-input" onblur="verify()">
                 </div>
             </div>
 
@@ -86,7 +72,7 @@
                 <table>
                     <tr>
                         <td>
-                            <label class="layui-form-label">邮箱:</label>
+                            <label class="layui-form-label"><span class="tag">*</span>邮箱:</label>
                             <div class="layui-input-block">
                                 <input type="text" id="email"  placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                             </div>
@@ -103,7 +89,7 @@
             </div>
             <br>
             <div class="layui-form-item">
-                <label class="layui-form-label">邮箱激活码:</label>
+                <label class="layui-form-label"><span class="tag">*</span>激活码:</label>
                 <div class="layui-input-block">
                     <input type="text" id="code" required  lay-verify="required" placeholder="请输入邮箱激活码" autocomplete="off" class="layui-input">
                 </div>

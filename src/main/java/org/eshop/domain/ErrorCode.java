@@ -27,4 +27,7 @@ public class ErrorCode {
     public static final int GET_ORDER_LIST_FAILED = 21; // 订单列表获取失败
     public static final int CANCEL_ORDER_FAILED = 22; // 订单取消失败
     public static final int DELETE_ORDER_FAILED = 23; // 订单删除失败
+    public static final int GET_CATEGORY_ERROR = 24;  // 获取品类列表失败
+    public static final int ADD_CATEGORY_FAILED = 25; // 添加品类失败
+    public static final int DELETE_CATEGORY_FAILED = 26; // 删除品类失败
 }

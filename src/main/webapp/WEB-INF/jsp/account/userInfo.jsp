@@ -11,14 +11,18 @@
 
 <div class="layui-tab user_info">
     <ul class="layui-tab-title" >
+        <li style="width: 30%"></li>
         <li class="layui-this">个人信息修改</li>
+        <li></li>
         <li>收获地址</li>
+        <li></li>
         <li>密码修改</li>
     </ul>
     <div class="layui-tab-content">
 
+        <div class="layui-tab-item "></div>
         <!--信息修改-->
-        <div class="layui-tab-item layui-show">
+        <div class="layui-tab-item layui-show content">
             <br>
             <br>
             <br>
@@ -81,12 +85,10 @@
                 </div>
             </div>
         </div>
-
+        <div class="layui-tab-item "></div>
         <!--收获地址-->
-        <div class="layui-tab-item">
-            <button class="layui-btn" id="add_address">
-                <i class="layui-icon">&#xe608;</i> 新增收货地址
-            </button>
+        <div class="layui-tab-item ">
+
             <br>
             <table class="layui-table">
                 <colgroup>
@@ -117,10 +119,14 @@
                 </c:forEach>
                 </tbody>
             </table>
-
+            <br>
+            <button class="layui-btn add_address" id="add_address">
+                <i class="layui-icon">&#xe608;</i> 新增收货地址
+            </button>
         </div>
+        <div class="layui-tab-item "></div>
         <!--密码修改-->
-        <div class="layui-tab-item">
+        <div class="layui-tab-item content">
             <br>
             <br>
             <form class="layui-form" action="">

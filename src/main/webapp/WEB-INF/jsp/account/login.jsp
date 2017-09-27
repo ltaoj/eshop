@@ -11,11 +11,9 @@
 <!--图片轮播-->
 <div class="layui-carousel pic_play" id="pic_play">
     <div carousel-item>
-        <div>条目1</div>
-        <div>条目2</div>
-        <div>条目3</div>
-        <div>条目4</div>
-        <div>条目5</div>
+        <div><img src="images/login/1.png"></div>
+        <div><img src="images/login/2.png"></div>
+        <div><img src="images/login/3.png"></div>
     </div>
 </div>
 

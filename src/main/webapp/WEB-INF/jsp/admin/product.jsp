@@ -39,7 +39,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" onclick="addCategory()">
                     确认添加
                 </button>
             </div>
@@ -71,7 +71,7 @@
         </div>
         <div class="main-content">
             <!--用于弹出信息-->
-            <div class="" hidden="true"></div>
+            <div class=""></div>
 
             <div class="content-item">
                 <h4>品类列表</h4>
@@ -90,26 +90,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><span>IFEY</span></td>
-                            <td><span>沙发</span></td>
-                            <td><span>沙发沙发沙发沙发沙发沙发</span></td>
-                            <td><span>
-                                        <a class="btn btn-danger">删除</a></span>
-                            </td>
-                        </tr>
+                        <c:forEach var="category" items="${categoryList}">
+                            <tr>
+                                <td><span>${category.categoryId}</span></td>
+                                <td><span>${category.name}</span></td>
+                                <td><span>${category.description}</span></td>
+                                <td><span>
+                                        <a class="btn btn-danger" onclick="deleteCategory(${category.categoryId})">删除</a></span>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
                 <!-- 底部信息没有数据时显示 -->
                 <div class="ci-footer">
-                    <span>尚未添加任何品类</span>
+                    <span <c:if test="${categoryList.size() > 0}">hidden="true"</c:if>>尚未添加任何品类</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="js/admin/product.js"></script>
 </body>
 </html>
 

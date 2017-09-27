@@ -6,8 +6,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import java.util.Properties;
-
 /**
  * Created by ltaoj on 2017/9/20.
  */

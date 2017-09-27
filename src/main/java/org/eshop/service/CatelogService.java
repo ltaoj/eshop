@@ -1,5 +1,6 @@
 package org.eshop.service;
 
+import org.eshop.entity.Category;
 import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
 import org.eshop.exception.CatelogServiceException;
@@ -57,4 +58,24 @@ public interface CatelogService {
      * @throws CatelogServiceException
      */
     Inventory getInventory(String itemId) throws CatelogServiceException;
+
+    /**
+     * 获取品类列表
+     * @return
+     * @throws CatelogServiceException
+     */
+    List<Category> getCategoryList() throws CatelogServiceException;
+
+    /**
+     * 添加品类
+     * @throws CatelogServiceException
+     */
+    void addCategory(Category category) throws CatelogServiceException;
+
+    /**
+     * 删除品类
+     * @param category
+     * @throws CatelogServiceException
+     */
+    void deleteCategory(Category category) throws CatelogServiceException;
 }

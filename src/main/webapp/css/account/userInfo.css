@@ -1,5 +1,16 @@
 .user_info
 {
-    margin-left: 26%;
-    margin-top: 10%;
+
+}
+.content
+{
+
+    position: absolute;
+    left: 35%;
+
+}
+.add_address
+{
+    position: absolute;
+    left: 45%;
 }

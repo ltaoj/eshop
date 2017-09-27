@@ -3,6 +3,7 @@ package org.eshop.web;
 import org.eshop.domain.BigItem;
 import org.eshop.domain.ErrorCode;
 import org.eshop.domain.Result;
+import org.eshop.entity.Category;
 import org.eshop.entity.Inventory;
 import org.eshop.entity.Item;
 import org.eshop.entity.Supplier;
@@ -17,15 +18,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +44,13 @@ public class AdminActionBean extends AbstractActionBean{
     }
 
     @RequestMapping(value = "catelogMg", method = RequestMethod.GET)
-    public String showProduct() {
-        return "admin/product";
+    public String showProduct(Model model) {
+        try {
+            model.addAttribute("categoryList", catelogService.getCategoryList());
+            return "admin/product";
+        } catch (CatelogServiceException e) {
+            throw new WrapperServiceException(ErrorCode.GET_CATEGORY_ERROR);
+        }
     }
 
     @RequestMapping(value = "itemMg", method = RequestMethod.GET)
@@ -115,5 +117,23 @@ public class AdminActionBean extends AbstractActionBean{
         }
     }
 
+    @RequestMapping(value = "addCategory", method = RequestMethod.POST)
+    public ResponseEntity<Result> addCategory(@RequestBody Category category) {
+        try {
+            catelogService.addCategory(category);
+            return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, "品类添加成功"), HttpStatus.OK);
+        } catch (CatelogServiceException e) {
+            throw new WrapperServiceException(ErrorCode.ADD_CATEGORY_FAILED);
+        }
+    }
 
+    @RequestMapping(value = "delCategory", method = RequestMethod.POST)
+    public ResponseEntity<Result> deleteCategory(@RequestBody Category category) {
+        try {
+            catelogService.deleteCategory(category);
+            return new ResponseEntity<Result>(new Result(Result.RESULT_SUCCESS, "删除品类失败"), HttpStatus.OK);
+        } catch (CatelogServiceException e) {
+            throw new WrapperServiceException(ErrorCode.DELETE_CATEGORY_FAILED);
+        }
+    }
 }
