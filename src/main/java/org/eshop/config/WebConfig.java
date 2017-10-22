@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.eshop")
+@ComponentScan(basePackages = "org.eshop.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver viewResolver() {
