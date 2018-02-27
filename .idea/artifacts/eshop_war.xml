@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="org.eshop.war">
       <element id="artifact" artifact-name="eshop:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="C:/apache-tomcat-8.0.48/lib/jstl.jar" />
+          <element id="file-copy" path="C:/apache-tomcat-8.0.48/lib/standard.jar" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

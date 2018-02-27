@@ -23,6 +23,7 @@ public class EshopWebAppInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement("D:\\uploads"));
+//        registration.setMultipartConfig(new MultipartConfigElement("D:\\uploads"));
+        registration.setMultipartConfig(new MultipartConfigElement("/tmp/uploads/eshop"));
     }
 }

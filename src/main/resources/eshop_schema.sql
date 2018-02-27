@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50625
 File Encoding         : 65001
 
-Date: 2017-09-15 16:41:28
+Date: 2017-09-25 17:05:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `cartitem` (
   `login_id` varchar(20) NOT NULL,
   `item_id` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unitprice` decimal(10,2) NOT NULL,
+  `unitprice` decimal(20,2) NOT NULL,
   PRIMARY KEY (`login_id`,`item_id`),
   KEY `cart_item_2` (`item_id`),
   CONSTRAINT `cart_item_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -57,6 +57,7 @@ CREATE TABLE `harvestaddr` (
   `addr_id` int(11) NOT NULL AUTO_INCREMENT,
   `login_id` varchar(20) NOT NULL,
   `alias_name` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `province` varchar(20) NOT NULL,
   `city` varchar(20) NOT NULL,
   `district` varchar(20) NOT NULL,
@@ -65,7 +66,7 @@ CREATE TABLE `harvestaddr` (
   PRIMARY KEY (`addr_id`),
   KEY `harv_user_1` (`login_id`),
   CONSTRAINT `harv_user_1` FOREIGN KEY (`login_id`) REFERENCES `userinfo` (`login_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of harvestaddr
@@ -92,10 +93,11 @@ CREATE TABLE `inventory` (
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
   `category_id` varchar(20) NOT NULL,
   `supplier_id` varchar(20) NOT NULL,
-  `listprice` decimal(10,2) NOT NULL,
-  `unitcost` decimal(10,2) NOT NULL,
+  `listprice` decimal(20,2) NOT NULL,
+  `unitcost` decimal(20,2) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `isStock` int(4) NOT NULL,
   `attr1` varchar(200) DEFAULT NULL,
@@ -120,11 +122,11 @@ CREATE TABLE `lineitem` (
   `order_id` varchar(20) NOT NULL,
   `item_id` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unitprice` decimal(10,2) NOT NULL,
+  `unitprice` decimal(20,2) NOT NULL,
   PRIMARY KEY (`order_id`,`item_id`),
   KEY `line_item_2` (`item_id`),
   CONSTRAINT `line_item_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `line_order_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `line_order_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -150,10 +152,10 @@ CREATE TABLE `log` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `order`
+-- Table structure for `orders`
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
   `order_id` varchar(20) NOT NULL,
   `order_date` datetime NOT NULL,
   `login_id` varchar(20) NOT NULL,
@@ -164,14 +166,14 @@ CREATE TABLE `order` (
   `bill_district` varchar(20) NOT NULL,
   `bill_detail_addr` varchar(50) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `total_price` decimal(20,0) NOT NULL,
+  `total_price` decimal(20,2) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `order_user_1` (`login_id`),
   CONSTRAINT `order_user_1` FOREIGN KEY (`login_id`) REFERENCES `userinfo` (`login_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order
+-- Records of orders
 -- ----------------------------
 
 -- ----------------------------
@@ -183,7 +185,7 @@ CREATE TABLE `orderstatus` (
   `date` datetime NOT NULL,
   `status` int(4) NOT NULL,
   PRIMARY KEY (`order_id`),
-  CONSTRAINT `orderstatus_order_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `orderstatus_order_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -200,9 +202,7 @@ CREATE TABLE `signon` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `authorities` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  CONSTRAINT `signon_supplier_2` FOREIGN KEY (`user_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `signon_user_1` FOREIGN KEY (`user_id`) REFERENCES `userinfo` (`login_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -228,6 +228,7 @@ CREATE TABLE `supplier` (
 -- ----------------------------
 -- Records of supplier
 -- ----------------------------
+INSERT INTO `supplier` VALUES ('222', '1', '1', '1', '1', '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -245,4 +246,20 @@ CREATE TABLE `userinfo` (
 
 -- ----------------------------
 -- Records of userinfo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `verifycode`
+-- ----------------------------
+DROP TABLE IF EXISTS `verifycode`;
+CREATE TABLE `verifycode` (
+  `code_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`code_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of verifycode
 -- ----------------------------
