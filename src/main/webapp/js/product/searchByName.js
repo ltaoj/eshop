@@ -9,7 +9,7 @@ function searchByName() {
     var page = 1;
     var count = 15;
     var json = {keyword: keyword, type: type, byPage: byPage, page: page, count: count};
-
+    console.log("click");
     $.ajax({
         url: "search",
         method: "GET",

@@ -1,9 +1,6 @@
 package org.eshop.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by ltaoj on 2017/9/21.
  */
 @Entity
+@Table(name = "orders", schema = "eshop", catalog = "")
 public class Orders {
     private String orderId;
     private Timestamp orderDate;

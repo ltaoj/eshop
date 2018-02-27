@@ -7,6 +7,7 @@ import java.math.BigDecimal;
  * Created by ltaoj on 2017/9/21.
  */
 @Entity
+@Table(name = "cartitem", schema = "eshop", catalog = "")
 @IdClass(CartitemPK.class)
 public class Cartitem {
     private String loginId;

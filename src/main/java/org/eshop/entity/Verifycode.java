@@ -7,6 +7,7 @@ import java.sql.Timestamp;
  * Created by ltaoj on 2017/9/18.
  */
 @Entity
+@Table(name = "verifycode", schema = "eshop", catalog = "")
 public class Verifycode {
     private int codeId;
     private String email;

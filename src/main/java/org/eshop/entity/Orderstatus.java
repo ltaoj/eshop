@@ -1,15 +1,13 @@
 package org.eshop.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by ltaoj on 2017/9/15.
  */
 @Entity
+@Table(name = "orderstatus", schema = "eshop", catalog = "")
 public class Orderstatus {
     private String orderId;
     private Timestamp date;

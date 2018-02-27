@@ -23,9 +23,9 @@
     <meta name="generator" content="ltaoj" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/admin/style.css" />
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="plugin/bootstrap/css/v3.3.7_bootstrap.min.css">
+    <script src="js/jquery/v2.1.1_jquery.min.js"></script>
+    <script src="plugin/bootstrap/js/v3.3.7_bootstrap.min.js"></script>
 </head>
 
 <body>
