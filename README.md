@@ -71,3 +71,9 @@ Action有Spring MVC用于页面的跳转，同时使用了Model，将数据放�
 系统安全验证使用了Spring security对用户权限进行控制，配置用户可以访问的地方。
 
 注册时的验证码使用了Spring JavaMail发送电子邮件。
+
+商城用户端地址:https://www.ltaoj.cn/eshop/
+可以在https://www.ltaoj.cn/eshop/registForm进行用户注册
+
+商城后台管理地址：https://www.ltaoj.cn/eshop/adminLogin
+测试账号：admin    密码：admin
