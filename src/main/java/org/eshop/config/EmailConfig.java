@@ -17,8 +17,8 @@ public class EmailConfig {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.163.com");
         mailSender.setPort(25);
-        mailSender.setUsername("taoj0417@163.com");
-        mailSender.setPassword("helloworld123");
+        mailSender.setUsername("xxx@163.com");
+        mailSender.setPassword("helloworldxxx");
         return mailSender;
     }
 }
